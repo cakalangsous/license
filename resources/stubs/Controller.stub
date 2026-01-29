@@ -1,0 +1,113 @@
+<?php
+
+namespace App\Http\Controllers\Admin;
+
+use App\Actions\Modules\{{ modelName }}\Create{{ modelName }};
+use App\Actions\Modules\{{ modelName }}\Delete{{ modelName }};
+use App\Actions\Modules\{{ modelName }}\GetFiltered{{ modelNamePluralCapital }};
+use App\Actions\Modules\{{ modelName }}\Update{{ modelName }};
+use App\Http\Controllers\AdminController;
+use App\Http\Requests\Admin\Store{{ modelName }}Request;
+use App\Http\Requests\Admin\Update{{ modelName }}Request;
+use App\Models\{{ modelName }};
+{{ relationImports }}
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
+use Inertia\Response as InertiaResponse;
+
+class {{ modelName }}Controller extends AdminController
+{
+    public function __construct()
+    {
+        $this->data['parent_menu'] = '{{ modelNamePluralSnakeCase }}';
+        $this->data['active_menu'] = '{{ modelNamePluralSnakeCase }}';
+        $this->data['title'] = '{{ modelNamePluralCapital }}';
+    }
+
+    /**
+     * Display a listing of the resource.
+     */
+    public function index(Request $request): InertiaResponse
+    {
+        abort_if(!auth()->user()->can('{{ modelNamePluralSnakeCase }}_view'), 403);
+
+        $this->data['paginated{{ modelNamePluralCapital }}'] = (new GetFiltered{{ modelNamePluralCapital }}())->execute($request);
+
+        return inertia('{{ modelNamePluralCapital }}/Index', $this->data);
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function create(): InertiaResponse
+    {
+        abort_if(!auth()->user()->can('{{ modelNamePluralSnakeCase }}_create'), 403);
+
+        $this->data['title'] = 'Create New {{ modelNameSingularCapital }}';
+        {{ relationDataFetching }}
+
+        return inertia('{{ modelNamePluralCapital }}/Create', $this->data);
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function store(Store{{ modelName }}Request $request): RedirectResponse
+    {
+        (new Create{{ modelName }}())->execute($request->validated(){{ filepondArg }});
+
+        return redirect()->route('admin.{{ modelNamePluralLowerCase }}.index')
+            ->with('success', '{{ modelNameSingularCapital }} created successfully.');
+    }
+
+    /**
+     * Display the specified resource.
+     */
+    public function show({{ modelName }} ${{ modelNameSingularLowerCase }}): InertiaResponse
+    {
+        abort_if(!auth()->user()->can('{{ modelNamePluralSnakeCase }}_view'), 403);
+
+        $this->data['{{ modelNameSingularLowerCase }}'] = ${{ modelNameSingularLowerCase }};
+        $this->data['title'] = '{{ modelNameSingularCapital }} Details';
+
+        return inertia('{{ modelNamePluralCapital }}/Show', $this->data);
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit({{ modelName }} ${{ modelNameSingularLowerCase }}): InertiaResponse
+    {
+        abort_if(!auth()->user()->can('{{ modelNamePluralSnakeCase }}_update'), 403);
+
+        $this->data['{{ modelNameSingularLowerCase }}'] = ${{ modelNameSingularLowerCase }};
+        $this->data['title'] = 'Edit {{ modelNameSingularCapital }}';
+        {{ relationDataFetching }}
+
+        return inertia('{{ modelNamePluralCapital }}/Edit', $this->data);
+    }
+
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(Update{{ modelName }}Request $request, {{ modelName }} ${{ modelNameSingularLowerCase }}): RedirectResponse
+    {
+        (new Update{{ modelName }}())->execute(${{ modelNameSingularLowerCase }}, $request->validated(){{ filepondArg }});
+
+        return redirect()->route('admin.{{ modelNamePluralLowerCase }}.index')
+            ->with('success', '{{ modelNameSingularCapital }} updated successfully.');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy({{ modelName }} ${{ modelNameSingularLowerCase }}): RedirectResponse
+    {
+        abort_if(!auth()->user()->can('{{ modelNamePluralSnakeCase }}_delete'), 403);
+
+        (new Delete{{ modelName }}())->execute(${{ modelNameSingularLowerCase }});
+
+        return redirect()->route('admin.{{ modelNamePluralLowerCase }}.index')
+            ->with('success', '{{ modelNameSingularCapital }} deleted successfully.');
+    }
+}

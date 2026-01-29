@@ -1,0 +1,60 @@
+<script setup>
+import { Head, useForm } from "@inertiajs/vue3";
+import AdminLayout from "@/Layouts/AdminLayout.vue";
+import Card from "@/Components/UI/Card.vue";
+import Button from "@/Components/UI/Button.vue";
+{{ componentImports }}
+import {{ modelNamePluralLowerCase }} from "@/routes/admin/{{ modelNamePluralLowerCase }}";
+import { useToast } from "vue-toastification";
+
+const props = defineProps({
+    title: {
+        type: String,
+        default: "Create {{ modelNameSingularCapital }}",
+    },
+    {{ additionalProps }}
+});
+
+const toast = useToast();
+
+{{ optionsDefinitions }}
+
+const form = useForm({
+    {{ formFields }}
+});
+
+const submit = () => {
+    form.post({{ modelNamePluralLowerCase }}.store.url(), {
+        onSuccess: () => {
+            toast.success("{{ modelNameSingularCapital }} created successfully!");
+        },
+        onError: (errors) => {
+            toast.error("Failed to create {{ modelNameSingularLowerCase }}. Please check the form.");
+            console.error(errors);
+        },
+    });
+};
+</script>
+
+<template>
+    <AdminLayout :title="title">
+        <Head :title="title" />
+
+        <Card :title="title">
+            <form @submit.prevent="submit">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                    {{ formInputs }}
+                </div>
+
+                <div class="flex justify-end pt-4 border-t border-gray-200 dark:border-gray-700">
+                    <Button type="submit" :loading="form.processing" variant="primary">
+                        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                        </svg>
+                        Create {{ modelNameSingularCapital }}
+                    </Button>
+                </div>
+            </form>
+        </Card>
+    </AdminLayout>
+</template>

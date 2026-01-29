@@ -1,0 +1,38 @@
+<script setup>
+import { Head } from "@inertiajs/vue3";
+import AdminLayout from "@/Layouts/AdminLayout.vue";
+import Card from "@/Components/UI/Card.vue";
+import LinkButton from "@/Components/UI/LinkButton.vue";
+
+const props = defineProps({
+    title: {
+        type: String,
+        default: "{{ modelNameSingularCapital }} Details",
+    },
+    {{ modelNameSingularLowerCase }}: {
+        type: Object,
+        required: true,
+    },
+});
+</script>
+
+<template>
+    <AdminLayout :title="title">
+        <Head :title="title" />
+
+        <Card :title="title">
+            <template #header-actions>
+                <LinkButton
+                    :href="`/admin/{{ modelNamePluralLowerCase }}`"
+                    variant="outline-secondary"
+                >
+                    Back to List
+                </LinkButton>
+            </template>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+{{ detailsFields }}
+            </div>
+        </Card>
+    </AdminLayout>
+</template>

@@ -1,0 +1,17 @@
+<?php
+
+namespace App\Actions\Modules\{{ modelName }};
+
+use App\Models\{{ modelName }};
+{{ fileImports }}
+
+class Update{{ modelName }}
+{
+    public function execute({{ modelName }} ${{ modelNameSingularLowerCase }}, array $data{{ filepondParam }}): {{ modelName }}
+    {
+        {{ updateFileProcessing }}
+        ${{ modelNameSingularLowerCase }}->update($data);
+
+        return ${{ modelNameSingularLowerCase }};
+    }
+}

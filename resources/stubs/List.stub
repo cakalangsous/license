@@ -1,0 +1,71 @@
+@extends("admin.layouts.master")
+@section("content")
+    <div class="page-heading">
+        @include('admin.partials.title')
+        <section class="section">
+            <div class="card">
+                <div class="card-header">
+                    All {{ modelNamePluralCapital }}
+                    @can('{{ modelNamePluralLowerCase }}_create')
+                        <a href="{{ route("admin.{{ modelNamePluralLowerCase }}.create") }}" class="btn btn-outline-primary ms-2">Add New</a>
+                    @endcan
+
+                </div>
+                <div class="card-body table-responsive">
+                    <table class="table data-table">
+                        <thead>
+                            <tr>
+                                <th>No</th>
+                                {{ table_heads }}
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+    </div>
+@endsection
+
+@section("script")
+    <script src="https://cdn.datatables.net/v/bs5/dt-1.12.1/datatables.min.js"></script>
+    <script src="{{ asset("assets/js/pages/datatables.js") }}"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var table = $('.data-table').DataTable({
+                processing: true,
+                serverSide: true,
+                ajax: "{{ route('admin.{{ modelNamePluralLowerCase }}.data') }}",
+                columns: [
+                    {data: 'DT_RowIndex', name: 'DT_RowIndex', orderable: false, searchable: false},
+                    {{ table_body }}
+                    {data: "action", name: "action", orderable: false, searchable: false}
+                ]
+            });
+
+            $(document).on("click", ".delete-btn", function(e) {
+                e.preventDefault()
+    
+                var form = $(this).parent("form")
+                var form_id = form.data("form_id")
+                Swal.fire({
+                    title: `Delete Data?`,
+                    text: `The data will be deleted. You may not be able to recover it later.`,
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#435ebe',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, delete it!'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        $(`#${form_id}`).submit()
+                    }
+                })
+            })
+        });
+
+      </script>
+@endsection

@@ -1,0 +1,37 @@
+@extends('backend.base_layout')
+@section('main-content')
+    <div id="main">
+        <div class="row">
+            @include('backend.partials.breadcrumbs')
+            <div class="col s12 animated">
+                <div class="card-alert card lighten-5">
+                    <div class="card-content" id="err-message" style="display:none;"></div>
+                </div>
+            </div>
+            <div class="col m8 s12 animated fadeInLeft">
+                <div class="card card-default">
+                    <div class="card-content">
+                        <h3 class="card-title">{{ $title }} Form</h3>
+                        <div class="row">
+                            <div class="col s12">
+                                <form action="{{ route('admin.{{modelNamePluralLowerCase}}.update') }}" id="store_user" enctype="multipart/form-data" method="POST" class="col s12">
+                                    @csrf
+                                    {{inputField}}
+                                    
+                                    <div class="row mt-10">
+                                        <div class="input-field">
+        									<button class="waves-effect waves-light btn gradient-45deg-green-teal z-depth-4">
+        										Submit
+        										<i class="material-icons right">send</i>
+        									</button>
+        								</div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+@endsection

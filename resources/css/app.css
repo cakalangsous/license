@@ -1,0 +1,302 @@
+/* Import Nunito font */
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700;800&display=swap");
+
+/* Import Poppins font for frontend headings */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap");
+
+@import "tailwindcss";
+
+/* Enable class-based dark mode for Tailwind v4 */
+@variant dark (&:where(.dark, .dark *));
+
+/* Theme configuration using CSS variables for Tailwind v4 */
+@theme {
+    /* Primary color scale - These are default values, overridden by dynamic theme CSS */
+    --color-primary: #6771cf;
+    --color-primary-50: #f0f1f9;
+    --color-primary-100: #e1e3f4;
+    --color-primary-200: #c3c7e9;
+    --color-primary-300: #a5abde;
+    --color-primary-400: #878fd3;
+    --color-primary-500: #6771cf;
+    --color-primary-600: #525ba8;
+    --color-primary-700: #3e447e;
+    --color-primary-800: #292d54;
+    --color-primary-900: #15172a;
+
+    /* Secondary color scale - These are default values, overridden by dynamic theme CSS */
+    --color-secondary: #6c757d;
+    --color-secondary-50: #f8f9fa;
+    --color-secondary-100: #e9ecef;
+    --color-secondary-200: #dee2e6;
+    --color-secondary-300: #ced4da;
+    --color-secondary-400: #adb5bd;
+    --color-secondary-500: #6c757d;
+    --color-secondary-600: #495057;
+    --color-secondary-700: #343a40;
+    --color-secondary-800: #212529;
+    --color-secondary-900: #131313;
+
+    /* Other theme colors - These are default values, overridden by dynamic theme CSS */
+    --color-success: #198754;
+    --color-danger: #dc3545;
+    --color-warning: #ffc107;
+    --color-info: #0dcaf0;
+    --color-heading: #25396f;
+    --color-body-bg: #f2f7ff;
+    --color-body-text: #607080;
+
+    /* Sidebar colors - These are default values, overridden by dynamic theme CSS */
+    --color-sidebar-bg: #ffffff;
+    --color-sidebar-text: #a4a6b3;
+    --color-sidebar-active: #6771cf;
+
+    --font-sans: "Nunito", system-ui, sans-serif;
+    --font-heading: "Poppins", system-ui, sans-serif;
+}
+
+/* Dark mode sidebar override */
+.dark {
+    --color-sidebar-bg: #212529;
+}
+
+/* Base styles */
+body {
+    font-family: var(--font-sans);
+    color: var(--color-body-text);
+}
+
+html {
+    background-color: var(--color-body-bg);
+}
+
+html.dark {
+    background-color: var(--color-secondary-900);
+}
+
+html.dark body {
+    color: var(--color-secondary-200);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: var(--color-heading);
+    font-weight: 700;
+}
+
+/* Component classes */
+.card {
+    background-color: white;
+    border-radius: 0.25rem;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+}
+
+.dark .card {
+    background-color: var(--color-secondary-800);
+}
+
+.card-header {
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid var(--color-secondary-100);
+    font-weight: 600;
+    color: var(--color-heading);
+}
+
+.dark .card-header {
+    border-bottom-color: var(--color-secondary-700);
+    color: white;
+}
+
+.card-body {
+    padding: 1.5rem;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem 1rem;
+    border-radius: 0.25rem;
+    font-weight: 500;
+    transition: all 0.2s;
+    cursor: pointer;
+}
+
+.btn:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(31, 189, 189, 0.25);
+}
+
+.btn-primary {
+    background-color: var(--color-primary);
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: var(--color-primary-600);
+}
+
+.btn-secondary {
+    background-color: var(--color-secondary);
+    color: white;
+}
+
+.btn-secondary:hover {
+    background-color: var(--color-secondary-600);
+}
+
+.btn-danger {
+    background-color: var(--color-danger);
+    color: white;
+}
+
+.btn-danger:hover {
+    background-color: #bb2d3b;
+}
+
+.btn-outline-primary {
+    border: 1px solid var(--color-primary);
+    color: var(--color-primary);
+    background-color: transparent;
+}
+
+.btn-outline-primary:hover {
+    background-color: var(--color-primary);
+    color: white;
+}
+
+.btn-outline-secondary {
+    border: 1px solid var(--color-secondary-300);
+    color: var(--color-secondary-600);
+    background-color: transparent;
+}
+
+.btn-outline-secondary:hover {
+    background-color: var(--color-secondary-100);
+}
+
+.btn-lg {
+    padding: 0.75rem 1.5rem;
+    font-size: 1.125rem;
+}
+
+.form-control {
+    width: 100%;
+    padding: 0.5rem 0.75rem;
+    border: 1px solid var(--color-secondary-200);
+    border-radius: 0.25rem;
+    background-color: white;
+    color: var(--color-body-text);
+    transition:
+        border-color 0.2s,
+        box-shadow 0.2s;
+}
+
+.form-control::placeholder {
+    color: var(--color-secondary-400);
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 2px rgba(31, 189, 189, 0.25);
+}
+
+.dark .form-control {
+    background-color: var(--color-secondary-800);
+    border-color: var(--color-secondary-600);
+    color: white;
+}
+
+/* Native select dropdown styling (where browser supports) */
+select.form-control {
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%236b7280'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.75rem center;
+    background-size: 1rem;
+    padding-right: 2.5rem;
+}
+
+select.form-control option {
+    background-color: var(--color-primary, #6771cf);
+    color: white;
+    padding: 0.5rem;
+}
+
+select.form-control option:hover,
+select.form-control option:checked {
+    background-color: var(--color-primary-700, #137171);
+}
+
+.dark select.form-control {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%239ca3af'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'/%3E%3C/svg%3E");
+}
+
+.dark select.form-control option {
+    background-color: var(--color-primary-900, #062626);
+    color: white;
+}
+
+.form-label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: var(--color-heading);
+}
+
+.dark .form-label {
+    color: white;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.avatar {
+    border-radius: 9999px;
+    overflow: hidden;
+}
+
+.badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.25rem 0.5rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+    border-radius: 0.25rem;
+}
+
+.stats-icon {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 9999px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Dark mode headings */
+html.dark h1,
+html.dark h2,
+html.dark h3,
+html.dark h4,
+html.dark h5,
+html.dark h6 {
+    color: white;
+}
+
+/* Frontend-specific heading styles with Poppins font */
+.frontend-layout h1,
+.frontend-layout h2,
+.frontend-layout h3,
+.frontend-layout h4,
+.frontend-layout h5,
+.frontend-layout h6 {
+    font-family: var(--font-heading);
+}

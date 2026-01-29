@@ -1,0 +1,13 @@
+<?php
+
+namespace App\Actions\Modules\{{ modelName }};
+
+use App\Models\{{ modelName }};
+
+class Delete{{ modelName }}
+{
+    public function execute({{ modelName }} ${{ modelNameSingularLowerCase }}): bool
+    {
+        return ${{ modelNameSingularLowerCase }}->delete();
+    }
+}

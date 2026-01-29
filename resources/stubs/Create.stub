@@ -1,0 +1,57 @@
+@extends("admin.layouts.master")
+@section("style")
+    {{ page_styles }}
+@endsection
+@section("content")
+    <div class="page-heading">
+        @include('admin.partials.title')
+
+        <section class="section">
+            <form id="create_post_form" action="{{ route("admin.{{ modelNamePluralLowerCase }}.store") }}" class="form form-vertical" method="POST" enctype="multipart/form-data">
+                @csrf
+                <div class="row">
+                    <div class="col-12" id="post_body">
+                        <div class="card">
+                            <div class="card-header">
+                                {{ $title }}
+                            </div>
+                            <div class="card-body">
+                                {{ input_fields }}
+                                <div class="col-12">
+                                    <button type="submit" class="btn btn-primary">
+                                    Submit
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </section>
+    </div>
+@endsection
+
+@section("script")
+    {{ page_scripts }}
+    <script>
+    
+        $("#create_post_form").submit(function(e) {
+            e.preventDefault()
+            var publish_status = $("#publish_status").val() == 0 ? "Draft" : "Publish"
+            Swal.fire({
+                title: `Save post as ${publish_status}?`,
+                text: "This post will marked as " + publish_status,
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#435ebe',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, save it!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $("#create_post_form").off("submit").submit()
+                }
+            })
+        })
+        
+    </script>
+@endsection

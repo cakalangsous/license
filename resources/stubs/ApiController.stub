@@ -1,0 +1,95 @@
+<?php
+namespace App\Http\Controllers\Api;
+
+use App\Http\Controllers\Controller;
+use App\Models\{{ modelName }};
+use Illuminate\Http\Request;
+use Illuminate\Http\JsonResponse;
+use App\Http\Requests\Admin\Store{{ modelName }}Request;
+
+class {{ modelName }}Controller extends Controller
+{
+    /**
+     * Display a listing of the resource.
+     */
+    public function index(Request $request): JsonResponse
+    {
+        $query = {{ modelName }}::query();
+        
+        // Handle search
+        if ($request->search) {
+            $search = $request->search;
+            $query->where(function ($q) use ($search) {
+                {{ searchableFields }}
+            });
+        }
+        
+        // Handle sorting
+        if ($request->sort) {
+            $direction = $request->direction === 'desc' ? 'desc' : 'asc';
+            $query->orderBy($request->sort, $direction);
+        } else {
+            $query->orderByDesc("id");
+        }
+        
+        $perPage = $request->per_page ?? 15;
+        $data = $query->paginate($perPage);
+        
+        return response()->json([
+            'success' => true,
+            'data' => $data,
+        ]);
+    }
+    
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function store(Store{{ modelName }}Request $request): JsonResponse
+    {
+        ${{ modelNameSingularLowerCase }} = {{ modelName }}::create($request->validated());
+        
+        return response()->json([
+            'success' => true,
+            'message' => '{{ modelNameSingularCapital }} created successfully.',
+            'data' => ${{ modelNameSingularLowerCase }},
+        ], 201);
+    }
+    
+    /**
+     * Display the specified resource.
+     */
+    public function show({{ modelName }} ${{ modelNameSingularLowerCase }}): JsonResponse
+    {
+        return response()->json([
+            'success' => true,
+            'data' => ${{ modelNameSingularLowerCase }},
+        ]);
+    }
+    
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(Store{{ modelName }}Request $request, {{ modelName }} ${{ modelNameSingularLowerCase }}): JsonResponse
+    {
+        ${{ modelNameSingularLowerCase }}->update($request->validated());
+        
+        return response()->json([
+            'success' => true,
+            'message' => '{{ modelNameSingularCapital }} updated successfully.',
+            'data' => ${{ modelNameSingularLowerCase }},
+        ]);
+    }
+    
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy({{ modelName }} ${{ modelNameSingularLowerCase }}): JsonResponse
+    {
+        ${{ modelNameSingularLowerCase }}->delete();
+        
+        return response()->json([
+            'success' => true,
+            'message' => '{{ modelNameSingularCapital }} deleted successfully.',
+        ]);
+    }
+}
