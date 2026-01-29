@@ -186,7 +186,7 @@ update.patch = (args: { permission: string | number } | [permission: string | nu
  * @see app/Http/Controllers/Core/PermissionController.php:67
  * @route '/admin/permissions/{permission}'
  */
-export const destroy = (args: { permission: number | { id: number } } | [permission: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
+export const destroy = (args: { permission: string | number | { id: string | number } } | [permission: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: destroy.url(args, options),
     method: 'delete',
 })
@@ -201,7 +201,7 @@ destroy.definition = {
  * @see app/Http/Controllers/Core/PermissionController.php:67
  * @route '/admin/permissions/{permission}'
  */
-destroy.url = (args: { permission: number | { id: number } } | [permission: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
+destroy.url = (args: { permission: string | number | { id: string | number } } | [permission: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { permission: args }
     }
@@ -234,7 +234,7 @@ destroy.url = (args: { permission: number | { id: number } } | [permission: numb
  * @see app/Http/Controllers/Core/PermissionController.php:67
  * @route '/admin/permissions/{permission}'
  */
-destroy.delete = (args: { permission: number | { id: number } } | [permission: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
+destroy.delete = (args: { permission: string | number | { id: string | number } } | [permission: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: destroy.url(args, options),
     method: 'delete',
 })

@@ -186,7 +186,7 @@ update.patch = (args: { role: string | number } | [role: string | number ] | str
  * @see app/Http/Controllers/Core/RoleController.php:64
  * @route '/admin/roles/{role}'
  */
-export const destroy = (args: { role: number | { id: number } } | [role: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
+export const destroy = (args: { role: string | number | { id: string | number } } | [role: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: destroy.url(args, options),
     method: 'delete',
 })
@@ -201,7 +201,7 @@ destroy.definition = {
  * @see app/Http/Controllers/Core/RoleController.php:64
  * @route '/admin/roles/{role}'
  */
-destroy.url = (args: { role: number | { id: number } } | [role: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
+destroy.url = (args: { role: string | number | { id: string | number } } | [role: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { role: args }
     }
@@ -234,7 +234,7 @@ destroy.url = (args: { role: number | { id: number } } | [role: number | { id: n
  * @see app/Http/Controllers/Core/RoleController.php:64
  * @route '/admin/roles/{role}'
  */
-destroy.delete = (args: { role: number | { id: number } } | [role: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
+destroy.delete = (args: { role: string | number | { id: string | number } } | [role: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: destroy.url(args, options),
     method: 'delete',
 })

@@ -124,7 +124,7 @@ store.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
  * @see app/Http/Controllers/Core/TagController.php:51
  * @route '/admin/tags/{tag}'
  */
-export const update = (args: { tag: number | { id: number } } | [tag: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+export const update = (args: { tag: string | number | { id: string | number } } | [tag: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: update.url(args, options),
     method: 'put',
 })
@@ -139,7 +139,7 @@ update.definition = {
  * @see app/Http/Controllers/Core/TagController.php:51
  * @route '/admin/tags/{tag}'
  */
-update.url = (args: { tag: number | { id: number } } | [tag: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
+update.url = (args: { tag: string | number | { id: string | number } } | [tag: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { tag: args }
     }
@@ -172,7 +172,7 @@ update.url = (args: { tag: number | { id: number } } | [tag: number | { id: numb
  * @see app/Http/Controllers/Core/TagController.php:51
  * @route '/admin/tags/{tag}'
  */
-update.put = (args: { tag: number | { id: number } } | [tag: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+update.put = (args: { tag: string | number | { id: string | number } } | [tag: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: update.url(args, options),
     method: 'put',
 })
@@ -181,7 +181,7 @@ update.put = (args: { tag: number | { id: number } } | [tag: number | { id: numb
  * @see app/Http/Controllers/Core/TagController.php:51
  * @route '/admin/tags/{tag}'
  */
-update.patch = (args: { tag: number | { id: number } } | [tag: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
+update.patch = (args: { tag: string | number | { id: string | number } } | [tag: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
     url: update.url(args, options),
     method: 'patch',
 })
@@ -191,7 +191,7 @@ update.patch = (args: { tag: number | { id: number } } | [tag: number | { id: nu
  * @see app/Http/Controllers/Core/TagController.php:62
  * @route '/admin/tags/{tag}'
  */
-export const destroy = (args: { tag: number | { id: number } } | [tag: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
+export const destroy = (args: { tag: string | number | { id: string | number } } | [tag: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: destroy.url(args, options),
     method: 'delete',
 })
@@ -206,7 +206,7 @@ destroy.definition = {
  * @see app/Http/Controllers/Core/TagController.php:62
  * @route '/admin/tags/{tag}'
  */
-destroy.url = (args: { tag: number | { id: number } } | [tag: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
+destroy.url = (args: { tag: string | number | { id: string | number } } | [tag: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { tag: args }
     }
@@ -239,7 +239,7 @@ destroy.url = (args: { tag: number | { id: number } } | [tag: number | { id: num
  * @see app/Http/Controllers/Core/TagController.php:62
  * @route '/admin/tags/{tag}'
  */
-destroy.delete = (args: { tag: number | { id: number } } | [tag: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
+destroy.delete = (args: { tag: string | number | { id: string | number } } | [tag: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: destroy.url(args, options),
     method: 'delete',
 })
