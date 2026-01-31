@@ -11,11 +11,13 @@ class GetSettings
         $applicationSettings = Setting::where('group', 'application')->get()->keyBy('key');
         $themeSettings = Setting::where('group', 'theme')->get()->keyBy('key');
         $emailSettings = (new GetEmailSettings)->execute();
+        $licenseSettings = Setting::where('group', 'license')->get()->keyBy('key');
 
         return [
             'applicationSettings' => $applicationSettings,
             'themeSettings' => $themeSettings,
             'emailSettings' => $emailSettings,
+            'licenseSettings' => $licenseSettings,
         ];
     }
 }

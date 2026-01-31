@@ -3,19 +3,6 @@ import { computed } from "vue";
 import { usePage, Link } from "@inertiajs/vue3";
 import SidebarItem from "./SidebarItem.vue";
 
-// Import Hero Icons for static menus
-import {
-    Bars3Icon,
-    WrenchScrewdriverIcon,
-    ShieldCheckIcon,
-    Cog6ToothIcon,
-    KeyIcon,
-    ClockIcon,
-    PhotoIcon,
-    HeartIcon,
-    CloudArrowDownIcon,
-} from "@heroicons/vue/24/outline";
-
 // Import Wayfinder routes
 import SidebarMenuController from "@/actions/App/Http/Controllers/Core/SidebarMenuController";
 import CrudController from "@/actions/App/Http/Controllers/Core/Crud/CrudController";
@@ -29,6 +16,33 @@ import ApiTokenController from "@/actions/App/Http/Controllers/Core/ApiTokenCont
 import ActivityLogController from "@/actions/App/Http/Controllers/Core/ActivityLogController";
 import SystemHealthController from "@/actions/App/Http/Controllers/Core/SystemHealthController";
 import BackupController from "@/actions/App/Http/Controllers/Core/BackupController";
+import ProductController from "@/actions/App/Http/Controllers/Core/ProductController";
+import LicenseController from "@/actions/App/Http/Controllers/Core/LicenseController";
+import ActivationController from "@/actions/App/Http/Controllers/Core/ActivationController";
+import MarketplaceController from "@/actions/App/Http/Controllers/Core/MarketplaceController";
+import SaleController from "@/actions/App/Http/Controllers/Core/SaleController";
+import VerificationLogController from "@/actions/App/Http/Controllers/Core/VerificationLogController";
+import BlacklistedDomainController from "@/actions/App/Http/Controllers/Core/BlacklistedDomainController";
+
+// Import Hero Icons for static menus
+import {
+    Bars3Icon,
+    WrenchScrewdriverIcon,
+    ShieldCheckIcon,
+    Cog6ToothIcon,
+    KeyIcon,
+    ClockIcon,
+    PhotoIcon,
+    HeartIcon,
+    CloudArrowDownIcon,
+    ShoppingBagIcon,
+    TicketIcon,
+    CheckBadgeIcon,
+    BuildingStorefrontIcon,
+    CurrencyDollarIcon,
+    DocumentMagnifyingGlassIcon,
+    ShieldExclamationIcon,
+} from "@heroicons/vue/24/outline";
 
 const props = defineProps({
     open: {
@@ -76,6 +90,46 @@ const menuItems = computed(() => {
         {
             title: "Menu",
             items: [],
+        },
+        {
+            title: "License Management",
+            items: [
+                {
+                    name: "Marketplaces",
+                    href: MarketplaceController.index.url(),
+                    icon: BuildingStorefrontIcon,
+                },
+                {
+                    name: "Products",
+                    href: ProductController.index.url(),
+                    icon: ShoppingBagIcon,
+                },
+                {
+                    name: "Licenses",
+                    href: LicenseController.index.url(),
+                    icon: TicketIcon,
+                },
+                {
+                    name: "Activations",
+                    href: ActivationController.index.url(),
+                    icon: CheckBadgeIcon,
+                },
+                {
+                    name: "Sales",
+                    href: SaleController.index.url(),
+                    icon: CurrencyDollarIcon,
+                },
+                {
+                    name: "Verification Logs",
+                    href: VerificationLogController.index.url(),
+                    icon: DocumentMagnifyingGlassIcon,
+                },
+                {
+                    name: "Blacklisted Domains",
+                    href: BlacklistedDomainController.index.url(),
+                    icon: ShieldExclamationIcon,
+                },
+            ],
         },
         {
             title: "Super Admin",

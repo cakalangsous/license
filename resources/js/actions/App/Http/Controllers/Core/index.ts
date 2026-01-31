@@ -1,4 +1,11 @@
 import Auth from './Auth'
+import ProductController from './ProductController'
+import LicenseController from './LicenseController'
+import ActivationController from './ActivationController'
+import MarketplaceController from './MarketplaceController'
+import SaleController from './SaleController'
+import VerificationLogController from './VerificationLogController'
+import BlacklistedDomainController from './BlacklistedDomainController'
 import SidebarMenuController from './SidebarMenuController'
 import DashboardController from './DashboardController'
 import PostCategoryController from './PostCategoryController'
@@ -21,6 +28,13 @@ import MediaController from './MediaController'
 import TwoFactorController from './TwoFactorController'
 const Core = {
     Auth: Object.assign(Auth, Auth),
+ProductController: Object.assign(ProductController, ProductController),
+LicenseController: Object.assign(LicenseController, LicenseController),
+ActivationController: Object.assign(ActivationController, ActivationController),
+MarketplaceController: Object.assign(MarketplaceController, MarketplaceController),
+SaleController: Object.assign(SaleController, SaleController),
+VerificationLogController: Object.assign(VerificationLogController, VerificationLogController),
+BlacklistedDomainController: Object.assign(BlacklistedDomainController, BlacklistedDomainController),
 SidebarMenuController: Object.assign(SidebarMenuController, SidebarMenuController),
 DashboardController: Object.assign(DashboardController, DashboardController),
 PostCategoryController: Object.assign(PostCategoryController, PostCategoryController),

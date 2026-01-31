@@ -16,6 +16,7 @@ import {
     PhotoIcon,
     ArrowPathIcon,
     ComputerDesktopIcon,
+    KeyIcon,
 } from "@heroicons/vue/24/outline";
 
 const props = defineProps({
@@ -35,6 +36,10 @@ const props = defineProps({
         type: Object,
         default: () => ({}),
     },
+    licenseSettings: {
+        type: Object,
+        default: () => ({}),
+    },
     activeTab: {
         type: String,
         default: "application",
@@ -50,6 +55,7 @@ const tabs = [
     { id: "email", label: "Email", icon: "envelope" },
     { id: "theme", label: "Theme Colors", icon: "palette" },
     { id: "branding", label: "Branding", icon: "image" },
+    { id: "license", label: "License", icon: "key" },
 ];
 
 // Application form
@@ -102,6 +108,52 @@ const logoDarkForm = useForm({
 const faviconForm = useForm({
     logo: null,
     type: "favicon",
+});
+
+// License settings form
+const licenseForm = useForm({
+    // License Defaults
+    default_domain_limit_regular:
+        props.licenseSettings.default_domain_limit_regular?.value || "1",
+    default_domain_limit_extended:
+        props.licenseSettings.default_domain_limit_extended?.value || "5",
+    default_support_period_months:
+        props.licenseSettings.default_support_period_months?.value || "6",
+    // Heartbeat
+    heartbeat_grace_period_hours:
+        props.licenseSettings.heartbeat_grace_period_hours?.value || "72",
+    heartbeat_required:
+        props.licenseSettings.heartbeat_required?.value === "true",
+    // Security
+    auto_block_suspicious_domains:
+        props.licenseSettings.auto_block_suspicious_domains?.value === "true",
+    suspicious_threshold_count:
+        props.licenseSettings.suspicious_threshold_count?.value || "10",
+    suspicious_threshold_minutes:
+        props.licenseSettings.suspicious_threshold_minutes?.value || "5",
+    // Rate Limits
+    rate_limit_verify: props.licenseSettings.rate_limit_verify?.value || "30",
+    rate_limit_activate:
+        props.licenseSettings.rate_limit_activate?.value || "10",
+    rate_limit_heartbeat:
+        props.licenseSettings.rate_limit_heartbeat?.value || "60",
+    // Notifications
+    notify_on_new_sale:
+        props.licenseSettings.notify_on_new_sale?.value === "true",
+    notify_on_suspicious_activity:
+        props.licenseSettings.notify_on_suspicious_activity?.value === "true",
+    support_expiry_warning_days:
+        props.licenseSettings.support_expiry_warning_days?.value || "7",
+    notification_email: props.licenseSettings.notification_email?.value || "",
+    // Envato
+    envato_webhook_enabled:
+        props.licenseSettings.envato_webhook_enabled?.value === "true",
+    envato_webhook_secret:
+        props.licenseSettings.envato_webhook_secret?.value || "",
+    envato_personal_token:
+        props.licenseSettings.envato_personal_token?.value || "",
+    envato_auto_create_license:
+        props.licenseSettings.envato_auto_create_license?.value === "true",
 });
 
 // Preview URLs
@@ -169,6 +221,18 @@ const submitEmail = () => {
         },
         onError: () => {
             toast.error("Failed to update email settings");
+        },
+    });
+};
+
+const submitLicense = () => {
+    licenseForm.put("/admin/settings/license", {
+        preserveScroll: true,
+        onSuccess: () => {
+            toast.success("License settings updated successfully");
+        },
+        onError: () => {
+            toast.error("Failed to update license settings");
         },
     });
 };
@@ -355,6 +419,16 @@ const getImageUrl = (path) => {
                         <!-- Image Icon -->
                         <PhotoIcon
                             v-if="tab.icon === 'image'"
+                            :class="[
+                                currentTab === tab.id
+                                    ? 'text-primary'
+                                    : 'text-secondary-400 group-hover:text-secondary-500',
+                                '-ml-0.5 mr-2 h-5 w-5',
+                            ]"
+                        />
+                        <!-- Key Icon (License) -->
+                        <KeyIcon
+                            v-if="tab.icon === 'key'"
                             :class="[
                                 currentTab === tab.id
                                     ? 'text-primary'
@@ -1021,6 +1095,437 @@ const getImageUrl = (path) => {
                             </p>
                         </div>
                     </div>
+                </Card>
+            </div>
+
+            <!-- License Settings Tab -->
+            <div v-show="currentTab === 'license'">
+                <Card>
+                    <template #header>
+                        <div class="flex items-center gap-2">
+                            <KeyIcon class="w-5 h-5 text-primary" />
+                            <span class="font-semibold">License Settings</span>
+                        </div>
+                    </template>
+
+                    <form @submit.prevent="submitLicense" class="space-y-8">
+                        <!-- License Defaults Section -->
+                        <div>
+                            <h3
+                                class="text-sm font-medium text-secondary-700 dark:text-secondary-300 mb-4 flex items-center gap-2"
+                            >
+                                <span
+                                    class="w-2 h-2 rounded-full bg-blue-500"
+                                ></span>
+                                License Defaults
+                            </h3>
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                <FormInput
+                                    v-model="
+                                        licenseForm.default_domain_limit_regular
+                                    "
+                                    type="number"
+                                    label="Domain Limit (Regular)"
+                                    :error="
+                                        licenseForm.errors
+                                            .default_domain_limit_regular
+                                    "
+                                    min="1"
+                                />
+                                <FormInput
+                                    v-model="
+                                        licenseForm.default_domain_limit_extended
+                                    "
+                                    type="number"
+                                    label="Domain Limit (Extended)"
+                                    :error="
+                                        licenseForm.errors
+                                            .default_domain_limit_extended
+                                    "
+                                    min="1"
+                                />
+                                <FormInput
+                                    v-model="
+                                        licenseForm.default_support_period_months
+                                    "
+                                    type="number"
+                                    label="Support Period (Months)"
+                                    :error="
+                                        licenseForm.errors
+                                            .default_support_period_months
+                                    "
+                                    min="1"
+                                />
+                            </div>
+                        </div>
+
+                        <!-- Heartbeat Section -->
+                        <div
+                            class="border-t border-secondary-200 dark:border-secondary-700 pt-6"
+                        >
+                            <h3
+                                class="text-sm font-medium text-secondary-700 dark:text-secondary-300 mb-4 flex items-center gap-2"
+                            >
+                                <span
+                                    class="w-2 h-2 rounded-full bg-green-500"
+                                ></span>
+                                Heartbeat Settings
+                            </h3>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <FormInput
+                                    v-model="
+                                        licenseForm.heartbeat_grace_period_hours
+                                    "
+                                    type="number"
+                                    label="Grace Period (Hours)"
+                                    help="How long before an activation is stale"
+                                    :error="
+                                        licenseForm.errors
+                                            .heartbeat_grace_period_hours
+                                    "
+                                    min="1"
+                                />
+                                <div
+                                    class="flex items-center justify-between py-4"
+                                >
+                                    <div>
+                                        <label
+                                            class="block text-sm font-medium text-secondary-700 dark:text-secondary-300"
+                                        >
+                                            Require Heartbeat
+                                        </label>
+                                        <p class="text-sm text-secondary-500">
+                                            Block access if heartbeat not
+                                            received
+                                        </p>
+                                    </div>
+                                    <label
+                                        class="relative inline-flex items-center cursor-pointer"
+                                    >
+                                        <input
+                                            type="checkbox"
+                                            v-model="
+                                                licenseForm.heartbeat_required
+                                            "
+                                            class="sr-only peer"
+                                        />
+                                        <div
+                                            class="w-11 h-6 bg-secondary-200 dark:bg-secondary-700 peer-focus:ring-4 peer-focus:ring-primary-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-secondary-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-600"
+                                        ></div>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Security Section -->
+                        <div
+                            class="border-t border-secondary-200 dark:border-secondary-700 pt-6"
+                        >
+                            <h3
+                                class="text-sm font-medium text-secondary-700 dark:text-secondary-300 mb-4 flex items-center gap-2"
+                            >
+                                <span
+                                    class="w-2 h-2 rounded-full bg-red-500"
+                                ></span>
+                                Security Settings
+                            </h3>
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                <div
+                                    class="flex items-center justify-between py-4 md:col-span-3"
+                                >
+                                    <div>
+                                        <label
+                                            class="block text-sm font-medium text-secondary-700 dark:text-secondary-300"
+                                        >
+                                            Auto-Block Suspicious Domains
+                                        </label>
+                                        <p class="text-sm text-secondary-500">
+                                            Automatically blacklist domains with
+                                            excessive failures
+                                        </p>
+                                    </div>
+                                    <label
+                                        class="relative inline-flex items-center cursor-pointer"
+                                    >
+                                        <input
+                                            type="checkbox"
+                                            v-model="
+                                                licenseForm.auto_block_suspicious_domains
+                                            "
+                                            class="sr-only peer"
+                                        />
+                                        <div
+                                            class="w-11 h-6 bg-secondary-200 dark:bg-secondary-700 peer-focus:ring-4 peer-focus:ring-primary-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-secondary-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-600"
+                                        ></div>
+                                    </label>
+                                </div>
+                                <FormInput
+                                    v-model="
+                                        licenseForm.suspicious_threshold_count
+                                    "
+                                    type="number"
+                                    label="Threshold Count"
+                                    help="Failed attempts to trigger alert"
+                                    :error="
+                                        licenseForm.errors
+                                            .suspicious_threshold_count
+                                    "
+                                    min="1"
+                                />
+                                <FormInput
+                                    v-model="
+                                        licenseForm.suspicious_threshold_minutes
+                                    "
+                                    type="number"
+                                    label="Threshold Window (Minutes)"
+                                    help="Time window for counting failures"
+                                    :error="
+                                        licenseForm.errors
+                                            .suspicious_threshold_minutes
+                                    "
+                                    min="1"
+                                />
+                            </div>
+                        </div>
+
+                        <!-- Rate Limits Section -->
+                        <div
+                            class="border-t border-secondary-200 dark:border-secondary-700 pt-6"
+                        >
+                            <h3
+                                class="text-sm font-medium text-secondary-700 dark:text-secondary-300 mb-4 flex items-center gap-2"
+                            >
+                                <span
+                                    class="w-2 h-2 rounded-full bg-yellow-500"
+                                ></span>
+                                API Rate Limits (per minute)
+                            </h3>
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                <FormInput
+                                    v-model="licenseForm.rate_limit_verify"
+                                    type="number"
+                                    label="Verify Endpoint"
+                                    :error="
+                                        licenseForm.errors.rate_limit_verify
+                                    "
+                                    min="1"
+                                />
+                                <FormInput
+                                    v-model="licenseForm.rate_limit_activate"
+                                    type="number"
+                                    label="Activate/Deactivate Endpoints"
+                                    :error="
+                                        licenseForm.errors.rate_limit_activate
+                                    "
+                                    min="1"
+                                />
+                                <FormInput
+                                    v-model="licenseForm.rate_limit_heartbeat"
+                                    type="number"
+                                    label="Heartbeat Endpoint"
+                                    :error="
+                                        licenseForm.errors.rate_limit_heartbeat
+                                    "
+                                    min="1"
+                                />
+                            </div>
+                        </div>
+
+                        <!-- Notifications Section -->
+                        <div
+                            class="border-t border-secondary-200 dark:border-secondary-700 pt-6"
+                        >
+                            <h3
+                                class="text-sm font-medium text-secondary-700 dark:text-secondary-300 mb-4 flex items-center gap-2"
+                            >
+                                <span
+                                    class="w-2 h-2 rounded-full bg-purple-500"
+                                ></span>
+                                Notifications
+                            </h3>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div
+                                    class="flex items-center justify-between py-4"
+                                >
+                                    <div>
+                                        <label
+                                            class="block text-sm font-medium text-secondary-700 dark:text-secondary-300"
+                                        >
+                                            Notify on New Sale
+                                        </label>
+                                    </div>
+                                    <label
+                                        class="relative inline-flex items-center cursor-pointer"
+                                    >
+                                        <input
+                                            type="checkbox"
+                                            v-model="
+                                                licenseForm.notify_on_new_sale
+                                            "
+                                            class="sr-only peer"
+                                        />
+                                        <div
+                                            class="w-11 h-6 bg-secondary-200 dark:bg-secondary-700 peer-focus:ring-4 peer-focus:ring-primary-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-secondary-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-600"
+                                        ></div>
+                                    </label>
+                                </div>
+                                <div
+                                    class="flex items-center justify-between py-4"
+                                >
+                                    <div>
+                                        <label
+                                            class="block text-sm font-medium text-secondary-700 dark:text-secondary-300"
+                                        >
+                                            Notify on Suspicious Activity
+                                        </label>
+                                    </div>
+                                    <label
+                                        class="relative inline-flex items-center cursor-pointer"
+                                    >
+                                        <input
+                                            type="checkbox"
+                                            v-model="
+                                                licenseForm.notify_on_suspicious_activity
+                                            "
+                                            class="sr-only peer"
+                                        />
+                                        <div
+                                            class="w-11 h-6 bg-secondary-200 dark:bg-secondary-700 peer-focus:ring-4 peer-focus:ring-primary-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-secondary-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-600"
+                                        ></div>
+                                    </label>
+                                </div>
+                                <FormInput
+                                    v-model="
+                                        licenseForm.support_expiry_warning_days
+                                    "
+                                    type="number"
+                                    label="Support Expiry Warning (Days)"
+                                    help="Days before expiry to send warning"
+                                    :error="
+                                        licenseForm.errors
+                                            .support_expiry_warning_days
+                                    "
+                                    min="1"
+                                />
+                                <FormInput
+                                    v-model="licenseForm.notification_email"
+                                    type="email"
+                                    label="Notification Email"
+                                    help="Leave empty to use admin email"
+                                    :error="
+                                        licenseForm.errors.notification_email
+                                    "
+                                />
+                            </div>
+                        </div>
+
+                        <!-- Envato Integration Section -->
+                        <div
+                            class="border-t border-secondary-200 dark:border-secondary-700 pt-6"
+                        >
+                            <h3
+                                class="text-sm font-medium text-secondary-700 dark:text-secondary-300 mb-4 flex items-center gap-2"
+                            >
+                                <span
+                                    class="w-2 h-2 rounded-full bg-teal-500"
+                                ></span>
+                                Envato Integration
+                            </h3>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div
+                                    class="flex items-center justify-between py-4 md:col-span-2"
+                                >
+                                    <div>
+                                        <label
+                                            class="block text-sm font-medium text-secondary-700 dark:text-secondary-300"
+                                        >
+                                            Enable Envato Webhooks
+                                        </label>
+                                        <p class="text-sm text-secondary-500">
+                                            Receive sale/refund notifications
+                                            from Envato
+                                        </p>
+                                    </div>
+                                    <label
+                                        class="relative inline-flex items-center cursor-pointer"
+                                    >
+                                        <input
+                                            type="checkbox"
+                                            v-model="
+                                                licenseForm.envato_webhook_enabled
+                                            "
+                                            class="sr-only peer"
+                                        />
+                                        <div
+                                            class="w-11 h-6 bg-secondary-200 dark:bg-secondary-700 peer-focus:ring-4 peer-focus:ring-primary-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-secondary-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-600"
+                                        ></div>
+                                    </label>
+                                </div>
+                                <FormInput
+                                    v-model="licenseForm.envato_webhook_secret"
+                                    type="password"
+                                    label="Webhook Secret"
+                                    help="From Envato author dashboard"
+                                    :error="
+                                        licenseForm.errors.envato_webhook_secret
+                                    "
+                                />
+                                <FormInput
+                                    v-model="licenseForm.envato_personal_token"
+                                    type="password"
+                                    label="Personal API Token"
+                                    help="For verifying purchases"
+                                    :error="
+                                        licenseForm.errors.envato_personal_token
+                                    "
+                                />
+                                <div
+                                    class="flex items-center justify-between py-4 md:col-span-2"
+                                >
+                                    <div>
+                                        <label
+                                            class="block text-sm font-medium text-secondary-700 dark:text-secondary-300"
+                                        >
+                                            Auto-Create License on Sale
+                                        </label>
+                                        <p class="text-sm text-secondary-500">
+                                            Automatically create license when
+                                            webhook received
+                                        </p>
+                                    </div>
+                                    <label
+                                        class="relative inline-flex items-center cursor-pointer"
+                                    >
+                                        <input
+                                            type="checkbox"
+                                            v-model="
+                                                licenseForm.envato_auto_create_license
+                                            "
+                                            class="sr-only peer"
+                                        />
+                                        <div
+                                            class="w-11 h-6 bg-secondary-200 dark:bg-secondary-700 peer-focus:ring-4 peer-focus:ring-primary-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-secondary-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-600"
+                                        ></div>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div
+                            class="flex justify-end pt-4 border-t border-secondary-200 dark:border-secondary-700"
+                        >
+                            <Button
+                                type="submit"
+                                variant="primary"
+                                :disabled="licenseForm.processing"
+                            >
+                                <span v-if="licenseForm.processing"
+                                    >Saving...</span
+                                >
+                                <span v-else>Save License Settings</span>
+                            </Button>
+                        </div>
+                    </form>
                 </Card>
             </div>
         </div>

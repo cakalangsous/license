@@ -100,7 +100,7 @@ watch(
                                 <button
                                     v-if="closeable"
                                     @click="close"
-                                    class="p-1 rounded hover:bg-secondary-100 dark:hover:bg-secondary-700"
+                                    class="p-1 rounded-lg hover:bg-secondary-100 dark:hover:bg-secondary-700 transition-colors"
                                 >
                                     <svg
                                         class="w-5 h-5 text-secondary-500"

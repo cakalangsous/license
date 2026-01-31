@@ -1,4 +1,11 @@
 import { queryParams, type RouteQueryOptions, type RouteDefinition } from './../../wayfinder'
+import products from './products'
+import licenses from './licenses'
+import activations from './activations'
+import marketplaces from './marketplaces'
+import sales from './sales'
+import verificationLogs from './verification-logs'
+import blacklistedDomains from './blacklisted-domains'
 import sidebarMenus from './sidebar-menus'
 import post_categories from './post_categories'
 import tags from './tags'
@@ -362,6 +369,13 @@ get_image_edit_post.head = (options?: RouteQueryOptions): RouteDefinition<'head'
 const admin = {
     login: Object.assign(login, login),
 logout: Object.assign(logout, logout),
+products: Object.assign(products, products),
+licenses: Object.assign(licenses, licenses),
+activations: Object.assign(activations, activations),
+marketplaces: Object.assign(marketplaces, marketplaces),
+sales: Object.assign(sales, sales),
+verificationLogs: Object.assign(verificationLogs, verificationLogs),
+blacklistedDomains: Object.assign(blacklistedDomains, blacklistedDomains),
 sidebarMenus: Object.assign(sidebarMenus, sidebarMenus),
 dashboard: Object.assign(dashboard, dashboard),
 post_categories: Object.assign(post_categories, post_categories),

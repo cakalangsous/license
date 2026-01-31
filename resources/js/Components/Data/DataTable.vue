@@ -342,7 +342,7 @@ defineExpose({ reload });
                 <select
                     :value="perPage"
                     @change="changePerPage(Number($event.target.value))"
-                    class="rounded-md border-gray-300 shadow-sm focus:border-primary-500 focus:ring-primary-500 dark:bg-secondary-800 dark:border-secondary-600 dark:text-white py-1.5 text-sm"
+                    class="rounded-lg border-gray-300 shadow-sm focus:border-primary-500 focus:ring-primary-500/20 focus:ring-2 dark:bg-secondary-800 dark:border-secondary-600 dark:text-white py-1.5 pl-3 pr-8 text-sm transition-colors duration-200 focus:outline-none"
                 >
                     <option
                         v-for="opt in perPageOptions"
@@ -362,7 +362,7 @@ defineExpose({ reload });
                     @input="handleSearch"
                     type="text"
                     placeholder="Search..."
-                    class="rounded-md border-gray-300 shadow-sm focus:border-primary-500 focus:ring-primary-500 dark:bg-secondary-800 dark:border-secondary-600 dark:text-white pl-10 py-1.5 text-sm w-full sm:w-64"
+                    class="rounded-lg border-gray-300 shadow-sm focus:border-primary-500 focus:ring-primary-500/20 focus:ring-2 dark:bg-secondary-800 dark:border-secondary-600 dark:text-white pl-10 py-1.5 text-sm w-full sm:w-64 transition-colors duration-200 focus:outline-none"
                 />
                 <svg
                     class="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-secondary-400"
@@ -395,7 +395,7 @@ defineExpose({ reload });
                                 :checked="allSelected"
                                 :indeterminate="indeterminate"
                                 @change="toggleAll"
-                                class="rounded border-gray-300 text-primary-600 shadow-sm focus:border-primary-300 focus:ring focus:ring-primary-200 focus:ring-opacity-50"
+                                class="h-4 w-4 rounded border-secondary-300 text-primary shadow-sm focus:border-primary focus:ring focus:ring-primary/20 focus:ring-opacity-50 transition-colors duration-200 dark:border-secondary-600 dark:bg-secondary-800 dark:checked:bg-primary"
                             />
                         </th>
                         <th
@@ -475,14 +475,14 @@ defineExpose({ reload });
                         v-else
                         v-for="(row, index) in displayData"
                         :key="row.id || index"
-                        class="bg-white dark:bg-secondary-800 hover:bg-secondary-500 dark:hover:bg-secondary-750"
+                        class="bg-white dark:bg-secondary-800 hover:bg-secondary-400 hover:text-white dark:hover:bg-secondary-750"
                     >
                         <td v-if="selectable" class="px-4 py-3">
                             <input
                                 type="checkbox"
                                 :checked="modelValue.includes(row.id)"
                                 @change="toggleSelection(row.id)"
-                                class="rounded border-gray-300 text-primary-600 shadow-sm focus:border-primary-300 focus:ring focus:ring-primary-200 focus:ring-opacity-50"
+                                class="h-4 w-4 rounded border-secondary-300 text-primary shadow-sm focus:border-primary focus:ring focus:ring-primary/20 focus:ring-opacity-50 transition-colors duration-200 dark:border-secondary-600 dark:bg-secondary-800 dark:checked:bg-primary"
                             />
                         </td>
                         <td

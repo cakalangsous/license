@@ -17,5 +17,6 @@ class DatabaseSeeder extends Seeder
         $this->call(CrudSeeder::class);
         $this->call(SidebarMenuSeeder::class);
         $this->call(SettingsSeeder::class);
+        $this->call(LicenseSystemSeeder::class);
     }
 }

@@ -1,7 +1,7 @@
 import { queryParams, type RouteQueryOptions, type RouteDefinition } from './../../../../../wayfinder'
 /**
 * @see \App\Http\Controllers\Core\SettingsController::index
- * @see app/Http/Controllers/Core/SettingsController.php:32
+ * @see app/Http/Controllers/Core/SettingsController.php:33
  * @route '/admin/settings'
  */
 export const index = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -16,7 +16,7 @@ index.definition = {
 
 /**
 * @see \App\Http\Controllers\Core\SettingsController::index
- * @see app/Http/Controllers/Core/SettingsController.php:32
+ * @see app/Http/Controllers/Core/SettingsController.php:33
  * @route '/admin/settings'
  */
 index.url = (options?: RouteQueryOptions) => {
@@ -25,7 +25,7 @@ index.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\Core\SettingsController::index
- * @see app/Http/Controllers/Core/SettingsController.php:32
+ * @see app/Http/Controllers/Core/SettingsController.php:33
  * @route '/admin/settings'
  */
 index.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -34,7 +34,7 @@ index.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 })
 /**
 * @see \App\Http\Controllers\Core\SettingsController::index
- * @see app/Http/Controllers/Core/SettingsController.php:32
+ * @see app/Http/Controllers/Core/SettingsController.php:33
  * @route '/admin/settings'
  */
 index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -44,7 +44,7 @@ index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
 /**
 * @see \App\Http\Controllers\Core\SettingsController::application
- * @see app/Http/Controllers/Core/SettingsController.php:49
+ * @see app/Http/Controllers/Core/SettingsController.php:50
  * @route '/admin/settings/application'
  */
 export const application = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -59,7 +59,7 @@ application.definition = {
 
 /**
 * @see \App\Http\Controllers\Core\SettingsController::application
- * @see app/Http/Controllers/Core/SettingsController.php:49
+ * @see app/Http/Controllers/Core/SettingsController.php:50
  * @route '/admin/settings/application'
  */
 application.url = (options?: RouteQueryOptions) => {
@@ -68,7 +68,7 @@ application.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\Core\SettingsController::application
- * @see app/Http/Controllers/Core/SettingsController.php:49
+ * @see app/Http/Controllers/Core/SettingsController.php:50
  * @route '/admin/settings/application'
  */
 application.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -77,7 +77,7 @@ application.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 })
 /**
 * @see \App\Http\Controllers\Core\SettingsController::application
- * @see app/Http/Controllers/Core/SettingsController.php:49
+ * @see app/Http/Controllers/Core/SettingsController.php:50
  * @route '/admin/settings/application'
  */
 application.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -87,7 +87,7 @@ application.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
 /**
 * @see \App\Http\Controllers\Core\SettingsController::updateApplication
- * @see app/Http/Controllers/Core/SettingsController.php:57
+ * @see app/Http/Controllers/Core/SettingsController.php:58
  * @route '/admin/settings/application'
  */
 export const updateApplication = (options?: RouteQueryOptions): RouteDefinition<'put'> => ({
@@ -102,7 +102,7 @@ updateApplication.definition = {
 
 /**
 * @see \App\Http\Controllers\Core\SettingsController::updateApplication
- * @see app/Http/Controllers/Core/SettingsController.php:57
+ * @see app/Http/Controllers/Core/SettingsController.php:58
  * @route '/admin/settings/application'
  */
 updateApplication.url = (options?: RouteQueryOptions) => {
@@ -111,7 +111,7 @@ updateApplication.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\Core\SettingsController::updateApplication
- * @see app/Http/Controllers/Core/SettingsController.php:57
+ * @see app/Http/Controllers/Core/SettingsController.php:58
  * @route '/admin/settings/application'
  */
 updateApplication.put = (options?: RouteQueryOptions): RouteDefinition<'put'> => ({
@@ -121,7 +121,7 @@ updateApplication.put = (options?: RouteQueryOptions): RouteDefinition<'put'> =>
 
 /**
 * @see \App\Http\Controllers\Core\SettingsController::theme
- * @see app/Http/Controllers/Core/SettingsController.php:69
+ * @see app/Http/Controllers/Core/SettingsController.php:70
  * @route '/admin/settings/theme'
  */
 export const theme = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -136,7 +136,7 @@ theme.definition = {
 
 /**
 * @see \App\Http\Controllers\Core\SettingsController::theme
- * @see app/Http/Controllers/Core/SettingsController.php:69
+ * @see app/Http/Controllers/Core/SettingsController.php:70
  * @route '/admin/settings/theme'
  */
 theme.url = (options?: RouteQueryOptions) => {
@@ -145,7 +145,7 @@ theme.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\Core\SettingsController::theme
- * @see app/Http/Controllers/Core/SettingsController.php:69
+ * @see app/Http/Controllers/Core/SettingsController.php:70
  * @route '/admin/settings/theme'
  */
 theme.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -154,7 +154,7 @@ theme.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 })
 /**
 * @see \App\Http\Controllers\Core\SettingsController::theme
- * @see app/Http/Controllers/Core/SettingsController.php:69
+ * @see app/Http/Controllers/Core/SettingsController.php:70
  * @route '/admin/settings/theme'
  */
 theme.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -164,7 +164,7 @@ theme.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
 /**
 * @see \App\Http\Controllers\Core\SettingsController::updateTheme
- * @see app/Http/Controllers/Core/SettingsController.php:77
+ * @see app/Http/Controllers/Core/SettingsController.php:78
  * @route '/admin/settings/theme'
  */
 export const updateTheme = (options?: RouteQueryOptions): RouteDefinition<'put'> => ({
@@ -179,7 +179,7 @@ updateTheme.definition = {
 
 /**
 * @see \App\Http\Controllers\Core\SettingsController::updateTheme
- * @see app/Http/Controllers/Core/SettingsController.php:77
+ * @see app/Http/Controllers/Core/SettingsController.php:78
  * @route '/admin/settings/theme'
  */
 updateTheme.url = (options?: RouteQueryOptions) => {
@@ -188,7 +188,7 @@ updateTheme.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\Core\SettingsController::updateTheme
- * @see app/Http/Controllers/Core/SettingsController.php:77
+ * @see app/Http/Controllers/Core/SettingsController.php:78
  * @route '/admin/settings/theme'
  */
 updateTheme.put = (options?: RouteQueryOptions): RouteDefinition<'put'> => ({
@@ -198,7 +198,7 @@ updateTheme.put = (options?: RouteQueryOptions): RouteDefinition<'put'> => ({
 
 /**
 * @see \App\Http\Controllers\Core\SettingsController::updateEmail
- * @see app/Http/Controllers/Core/SettingsController.php:87
+ * @see app/Http/Controllers/Core/SettingsController.php:88
  * @route '/admin/settings/email'
  */
 export const updateEmail = (options?: RouteQueryOptions): RouteDefinition<'put'> => ({
@@ -213,7 +213,7 @@ updateEmail.definition = {
 
 /**
 * @see \App\Http\Controllers\Core\SettingsController::updateEmail
- * @see app/Http/Controllers/Core/SettingsController.php:87
+ * @see app/Http/Controllers/Core/SettingsController.php:88
  * @route '/admin/settings/email'
  */
 updateEmail.url = (options?: RouteQueryOptions) => {
@@ -222,7 +222,7 @@ updateEmail.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\Core\SettingsController::updateEmail
- * @see app/Http/Controllers/Core/SettingsController.php:87
+ * @see app/Http/Controllers/Core/SettingsController.php:88
  * @route '/admin/settings/email'
  */
 updateEmail.put = (options?: RouteQueryOptions): RouteDefinition<'put'> => ({
@@ -232,7 +232,7 @@ updateEmail.put = (options?: RouteQueryOptions): RouteDefinition<'put'> => ({
 
 /**
 * @see \App\Http\Controllers\Core\SettingsController::testEmail
- * @see app/Http/Controllers/Core/SettingsController.php:155
+ * @see app/Http/Controllers/Core/SettingsController.php:156
  * @route '/admin/settings/email/test'
  */
 export const testEmail = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -247,7 +247,7 @@ testEmail.definition = {
 
 /**
 * @see \App\Http\Controllers\Core\SettingsController::testEmail
- * @see app/Http/Controllers/Core/SettingsController.php:155
+ * @see app/Http/Controllers/Core/SettingsController.php:156
  * @route '/admin/settings/email/test'
  */
 testEmail.url = (options?: RouteQueryOptions) => {
@@ -256,7 +256,7 @@ testEmail.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\Core\SettingsController::testEmail
- * @see app/Http/Controllers/Core/SettingsController.php:155
+ * @see app/Http/Controllers/Core/SettingsController.php:156
  * @route '/admin/settings/email/test'
  */
 testEmail.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -266,7 +266,7 @@ testEmail.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
 
 /**
 * @see \App\Http\Controllers\Core\SettingsController::uploadLogo
- * @see app/Http/Controllers/Core/SettingsController.php:110
+ * @see app/Http/Controllers/Core/SettingsController.php:111
  * @route '/admin/settings/upload-logo'
  */
 export const uploadLogo = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -281,7 +281,7 @@ uploadLogo.definition = {
 
 /**
 * @see \App\Http\Controllers\Core\SettingsController::uploadLogo
- * @see app/Http/Controllers/Core/SettingsController.php:110
+ * @see app/Http/Controllers/Core/SettingsController.php:111
  * @route '/admin/settings/upload-logo'
  */
 uploadLogo.url = (options?: RouteQueryOptions) => {
@@ -290,7 +290,7 @@ uploadLogo.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\Core\SettingsController::uploadLogo
- * @see app/Http/Controllers/Core/SettingsController.php:110
+ * @see app/Http/Controllers/Core/SettingsController.php:111
  * @route '/admin/settings/upload-logo'
  */
 uploadLogo.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -300,7 +300,7 @@ uploadLogo.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
 
 /**
 * @see \App\Http\Controllers\Core\SettingsController::removeLogo
- * @see app/Http/Controllers/Core/SettingsController.php:127
+ * @see app/Http/Controllers/Core/SettingsController.php:128
  * @route '/admin/settings/remove-logo'
  */
 export const removeLogo = (options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
@@ -315,7 +315,7 @@ removeLogo.definition = {
 
 /**
 * @see \App\Http\Controllers\Core\SettingsController::removeLogo
- * @see app/Http/Controllers/Core/SettingsController.php:127
+ * @see app/Http/Controllers/Core/SettingsController.php:128
  * @route '/admin/settings/remove-logo'
  */
 removeLogo.url = (options?: RouteQueryOptions) => {
@@ -324,7 +324,7 @@ removeLogo.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\Core\SettingsController::removeLogo
- * @see app/Http/Controllers/Core/SettingsController.php:127
+ * @see app/Http/Controllers/Core/SettingsController.php:128
  * @route '/admin/settings/remove-logo'
  */
 removeLogo.delete = (options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
@@ -334,7 +334,7 @@ removeLogo.delete = (options?: RouteQueryOptions): RouteDefinition<'delete'> => 
 
 /**
 * @see \App\Http\Controllers\Core\SettingsController::resetTheme
- * @see app/Http/Controllers/Core/SettingsController.php:143
+ * @see app/Http/Controllers/Core/SettingsController.php:144
  * @route '/admin/settings/theme/reset'
  */
 export const resetTheme = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -349,7 +349,7 @@ resetTheme.definition = {
 
 /**
 * @see \App\Http\Controllers\Core\SettingsController::resetTheme
- * @see app/Http/Controllers/Core/SettingsController.php:143
+ * @see app/Http/Controllers/Core/SettingsController.php:144
  * @route '/admin/settings/theme/reset'
  */
 resetTheme.url = (options?: RouteQueryOptions) => {
@@ -358,13 +358,47 @@ resetTheme.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\Core\SettingsController::resetTheme
- * @see app/Http/Controllers/Core/SettingsController.php:143
+ * @see app/Http/Controllers/Core/SettingsController.php:144
  * @route '/admin/settings/theme/reset'
  */
 resetTheme.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     url: resetTheme.url(options),
     method: 'post',
 })
-const SettingsController = { index, application, updateApplication, theme, updateTheme, updateEmail, testEmail, uploadLogo, removeLogo, resetTheme }
+
+/**
+* @see \App\Http\Controllers\Core\SettingsController::updateLicense
+ * @see app/Http/Controllers/Core/SettingsController.php:172
+ * @route '/admin/settings/license'
+ */
+export const updateLicense = (options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+    url: updateLicense.url(options),
+    method: 'put',
+})
+
+updateLicense.definition = {
+    methods: ["put"],
+    url: '/admin/settings/license',
+} satisfies RouteDefinition<["put"]>
+
+/**
+* @see \App\Http\Controllers\Core\SettingsController::updateLicense
+ * @see app/Http/Controllers/Core/SettingsController.php:172
+ * @route '/admin/settings/license'
+ */
+updateLicense.url = (options?: RouteQueryOptions) => {
+    return updateLicense.definition.url + queryParams(options)
+}
+
+/**
+* @see \App\Http\Controllers\Core\SettingsController::updateLicense
+ * @see app/Http/Controllers/Core/SettingsController.php:172
+ * @route '/admin/settings/license'
+ */
+updateLicense.put = (options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+    url: updateLicense.url(options),
+    method: 'put',
+})
+const SettingsController = { index, application, updateApplication, theme, updateTheme, updateEmail, testEmail, uploadLogo, removeLogo, resetTheme, updateLicense }
 
 export default SettingsController

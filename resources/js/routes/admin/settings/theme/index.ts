@@ -1,7 +1,7 @@
 import { queryParams, type RouteQueryOptions, type RouteDefinition } from './../../../../wayfinder'
 /**
 * @see \App\Http\Controllers\Core\SettingsController::update
- * @see app/Http/Controllers/Core/SettingsController.php:77
+ * @see app/Http/Controllers/Core/SettingsController.php:78
  * @route '/admin/settings/theme'
  */
 export const update = (options?: RouteQueryOptions): RouteDefinition<'put'> => ({
@@ -16,7 +16,7 @@ update.definition = {
 
 /**
 * @see \App\Http\Controllers\Core\SettingsController::update
- * @see app/Http/Controllers/Core/SettingsController.php:77
+ * @see app/Http/Controllers/Core/SettingsController.php:78
  * @route '/admin/settings/theme'
  */
 update.url = (options?: RouteQueryOptions) => {
@@ -25,7 +25,7 @@ update.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\Core\SettingsController::update
- * @see app/Http/Controllers/Core/SettingsController.php:77
+ * @see app/Http/Controllers/Core/SettingsController.php:78
  * @route '/admin/settings/theme'
  */
 update.put = (options?: RouteQueryOptions): RouteDefinition<'put'> => ({
@@ -35,7 +35,7 @@ update.put = (options?: RouteQueryOptions): RouteDefinition<'put'> => ({
 
 /**
 * @see \App\Http\Controllers\Core\SettingsController::reset
- * @see app/Http/Controllers/Core/SettingsController.php:143
+ * @see app/Http/Controllers/Core/SettingsController.php:144
  * @route '/admin/settings/theme/reset'
  */
 export const reset = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -50,7 +50,7 @@ reset.definition = {
 
 /**
 * @see \App\Http\Controllers\Core\SettingsController::reset
- * @see app/Http/Controllers/Core/SettingsController.php:143
+ * @see app/Http/Controllers/Core/SettingsController.php:144
  * @route '/admin/settings/theme/reset'
  */
 reset.url = (options?: RouteQueryOptions) => {
@@ -59,7 +59,7 @@ reset.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\Core\SettingsController::reset
- * @see app/Http/Controllers/Core/SettingsController.php:143
+ * @see app/Http/Controllers/Core/SettingsController.php:144
  * @route '/admin/settings/theme/reset'
  */
 reset.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({

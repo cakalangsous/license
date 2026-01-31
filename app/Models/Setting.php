@@ -149,6 +149,14 @@ class Setting extends Model
     }
 
     /**
+     * Get license settings
+     */
+    public static function getLicenseSettings(): array
+    {
+        return static::getByGroup('license');
+    }
+
+    /**
      * Clear all settings cache
      */
     public static function clearCache(): void
@@ -156,6 +164,7 @@ class Setting extends Model
         Cache::forget('settings_all');
         Cache::forget('settings_group_application');
         Cache::forget('settings_group_theme');
+        Cache::forget('settings_group_license');
 
         static::pluck('key')->each(function ($key) {
             Cache::forget(static::$cachePrefix.$key);

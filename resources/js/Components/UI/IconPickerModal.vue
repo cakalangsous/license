@@ -325,7 +325,7 @@ watch(
                     v-model="searchQuery"
                     type="text"
                     placeholder="Search icons..."
-                    class="block w-full pl-10 pr-4 py-2 border border-secondary-300 rounded-lg bg-white dark:bg-secondary-800 dark:border-secondary-600 text-secondary-900 dark:text-white placeholder-secondary-400 focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
+                    class="block w-full pl-10 pr-4 py-2 border border-secondary-300 rounded-lg bg-white dark:bg-secondary-800 dark:border-secondary-600 text-secondary-900 dark:text-white placeholder-secondary-400 focus:outline-none focus:ring-2 focus:ring-primary-500/20 focus:border-primary-500 transition-colors duration-200"
                 />
             </div>
         </div>

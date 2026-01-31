@@ -45,10 +45,12 @@ const inputClasses = computed(() => [
             :placeholder="placeholder"
             :disabled="disabled"
             :readonly="readonly"
-            class="w-full rounded-md border-gray-300 p-2 shadow-sm focus:border-primary-500 focus:ring-primary-500 dark:bg-secondary-800 dark:border-secondary-600 dark:text-white dark:placeholder-gray-400 disabled:bg-gray-100 dark:disabled:bg-secondary-700"
-            :class="{
-                'border-red-500 focus:border-red-500 focus:ring-red-500': error,
-            }"
+            class="block w-full rounded-lg border px-4 py-2.5 text-sm transition-colors duration-200 focus:outline-none focus:ring-2 disabled:cursor-not-allowed disabled:opacity-60"
+            :class="[
+                error
+                    ? 'border-red-500 bg-red-50 text-red-900 placeholder-red-400 focus:border-red-500 focus:ring-red-500 dark:border-red-500 dark:bg-red-900/20 dark:text-red-400'
+                    : 'border-gray-300 bg-white text-gray-900 placeholder-gray-400 focus:border-primary-500 focus:ring-primary-500/20 dark:border-secondary-600 dark:bg-secondary-800 dark:text-white dark:placeholder-secondary-400',
+            ]"
         />
 
         <p v-if="error" class="mt-1 text-sm text-red-600 dark:text-red-400">

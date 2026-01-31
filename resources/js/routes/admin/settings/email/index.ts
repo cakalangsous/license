@@ -1,7 +1,7 @@
 import { queryParams, type RouteQueryOptions, type RouteDefinition } from './../../../../wayfinder'
 /**
 * @see \App\Http\Controllers\Core\SettingsController::update
- * @see app/Http/Controllers/Core/SettingsController.php:87
+ * @see app/Http/Controllers/Core/SettingsController.php:88
  * @route '/admin/settings/email'
  */
 export const update = (options?: RouteQueryOptions): RouteDefinition<'put'> => ({
@@ -16,7 +16,7 @@ update.definition = {
 
 /**
 * @see \App\Http\Controllers\Core\SettingsController::update
- * @see app/Http/Controllers/Core/SettingsController.php:87
+ * @see app/Http/Controllers/Core/SettingsController.php:88
  * @route '/admin/settings/email'
  */
 update.url = (options?: RouteQueryOptions) => {
@@ -25,7 +25,7 @@ update.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\Core\SettingsController::update
- * @see app/Http/Controllers/Core/SettingsController.php:87
+ * @see app/Http/Controllers/Core/SettingsController.php:88
  * @route '/admin/settings/email'
  */
 update.put = (options?: RouteQueryOptions): RouteDefinition<'put'> => ({
@@ -35,7 +35,7 @@ update.put = (options?: RouteQueryOptions): RouteDefinition<'put'> => ({
 
 /**
 * @see \App\Http\Controllers\Core\SettingsController::test
- * @see app/Http/Controllers/Core/SettingsController.php:155
+ * @see app/Http/Controllers/Core/SettingsController.php:156
  * @route '/admin/settings/email/test'
  */
 export const test = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -50,7 +50,7 @@ test.definition = {
 
 /**
 * @see \App\Http\Controllers\Core\SettingsController::test
- * @see app/Http/Controllers/Core/SettingsController.php:155
+ * @see app/Http/Controllers/Core/SettingsController.php:156
  * @route '/admin/settings/email/test'
  */
 test.url = (options?: RouteQueryOptions) => {
@@ -59,7 +59,7 @@ test.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\Core\SettingsController::test
- * @see app/Http/Controllers/Core/SettingsController.php:155
+ * @see app/Http/Controllers/Core/SettingsController.php:156
  * @route '/admin/settings/email/test'
  */
 test.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
