@@ -229,7 +229,7 @@ show.head = (args: { post: string | number } | [post: string | number ] | string
  * @see app/Http/Controllers/Core/PostController.php:68
  * @route '/admin/posts/{post}/edit'
  */
-export const edit = (args: { post: string | number | { id: string | number } } | [post: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+export const edit = (args: { post: number | { id: number } } | [post: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: edit.url(args, options),
     method: 'get',
 })
@@ -244,7 +244,7 @@ edit.definition = {
  * @see app/Http/Controllers/Core/PostController.php:68
  * @route '/admin/posts/{post}/edit'
  */
-edit.url = (args: { post: string | number | { id: string | number } } | [post: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions) => {
+edit.url = (args: { post: number | { id: number } } | [post: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { post: args }
     }
@@ -277,7 +277,7 @@ edit.url = (args: { post: string | number | { id: string | number } } | [post: s
  * @see app/Http/Controllers/Core/PostController.php:68
  * @route '/admin/posts/{post}/edit'
  */
-edit.get = (args: { post: string | number | { id: string | number } } | [post: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+edit.get = (args: { post: number | { id: number } } | [post: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: edit.url(args, options),
     method: 'get',
 })
@@ -286,7 +286,7 @@ edit.get = (args: { post: string | number | { id: string | number } } | [post: s
  * @see app/Http/Controllers/Core/PostController.php:68
  * @route '/admin/posts/{post}/edit'
  */
-edit.head = (args: { post: string | number | { id: string | number } } | [post: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+edit.head = (args: { post: number | { id: number } } | [post: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: edit.url(args, options),
     method: 'head',
 })
@@ -296,7 +296,7 @@ edit.head = (args: { post: string | number | { id: string | number } } | [post: 
  * @see app/Http/Controllers/Core/PostController.php:88
  * @route '/admin/posts/{post}'
  */
-export const update = (args: { post: string | number | { id: string | number } } | [post: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+export const update = (args: { post: number | { id: number } } | [post: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: update.url(args, options),
     method: 'put',
 })
@@ -311,7 +311,7 @@ update.definition = {
  * @see app/Http/Controllers/Core/PostController.php:88
  * @route '/admin/posts/{post}'
  */
-update.url = (args: { post: string | number | { id: string | number } } | [post: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions) => {
+update.url = (args: { post: number | { id: number } } | [post: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { post: args }
     }
@@ -344,7 +344,7 @@ update.url = (args: { post: string | number | { id: string | number } } | [post:
  * @see app/Http/Controllers/Core/PostController.php:88
  * @route '/admin/posts/{post}'
  */
-update.put = (args: { post: string | number | { id: string | number } } | [post: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+update.put = (args: { post: number | { id: number } } | [post: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: update.url(args, options),
     method: 'put',
 })
@@ -353,7 +353,7 @@ update.put = (args: { post: string | number | { id: string | number } } | [post:
  * @see app/Http/Controllers/Core/PostController.php:88
  * @route '/admin/posts/{post}'
  */
-update.patch = (args: { post: string | number | { id: string | number } } | [post: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
+update.patch = (args: { post: number | { id: number } } | [post: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
     url: update.url(args, options),
     method: 'patch',
 })
@@ -363,7 +363,7 @@ update.patch = (args: { post: string | number | { id: string | number } } | [pos
  * @see app/Http/Controllers/Core/PostController.php:99
  * @route '/admin/posts/{post}'
  */
-export const destroy = (args: { post: string | number | { id: string | number } } | [post: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
+export const destroy = (args: { post: number | { id: number } } | [post: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: destroy.url(args, options),
     method: 'delete',
 })
@@ -378,7 +378,7 @@ destroy.definition = {
  * @see app/Http/Controllers/Core/PostController.php:99
  * @route '/admin/posts/{post}'
  */
-destroy.url = (args: { post: string | number | { id: string | number } } | [post: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions) => {
+destroy.url = (args: { post: number | { id: number } } | [post: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { post: args }
     }
@@ -411,7 +411,7 @@ destroy.url = (args: { post: string | number | { id: string | number } } | [post
  * @see app/Http/Controllers/Core/PostController.php:99
  * @route '/admin/posts/{post}'
  */
-destroy.delete = (args: { post: string | number | { id: string | number } } | [post: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
+destroy.delete = (args: { post: number | { id: number } } | [post: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: destroy.url(args, options),
     method: 'delete',
 })

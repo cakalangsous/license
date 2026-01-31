@@ -81,68 +81,62 @@ const isSelected = (optionValue) => {
 </script>
 
 <template>
-    <div class="form-group">
-        <label v-if="label" class="form-label">
+    <div>
+        <label
+            v-if="label"
+            class="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300"
+        >
             {{ label }}
-            <span v-if="required" class="text-danger">*</span>
+            <span v-if="required" class="text-red-500">*</span>
         </label>
 
-        <select
-            :value="multiple ? undefined : internalValue"
-            :multiple="multiple"
-            :disabled="disabled"
-            class="form-control"
-            :class="{ 'border-danger focus:ring-danger': error }"
-            @change="handleChange"
-        >
-            <option v-if="placeholder && !multiple" value="">
-                {{ placeholder }}
-            </option>
-            <option
-                v-for="option in options"
-                :key="getOptionValue(option)"
-                :value="getOptionValue(option)"
-                :selected="isSelected(getOptionValue(option))"
+        <div class="relative">
+            <select
+                :value="multiple ? undefined : internalValue"
+                :multiple="multiple"
+                :disabled="disabled"
+                class="block w-full appearance-none rounded-lg border px-4 py-2.5 pr-10 text-sm transition-colors duration-200 focus:outline-none focus:ring-2 disabled:cursor-not-allowed disabled:opacity-60"
+                :class="[
+                    error
+                        ? 'border-red-500 bg-red-50 text-red-900 placeholder-red-400 focus:border-red-500 focus:ring-red-500 dark:border-red-500 dark:bg-red-900/20 dark:text-red-400'
+                        : 'border-gray-300 bg-white text-gray-900 placeholder-gray-400 focus:border-primary-500 focus:ring-primary-500/20 dark:border-secondary-600 dark:bg-secondary-800 dark:text-white dark:placeholder-secondary-400',
+                    multiple ? 'p-2' : '',
+                ]"
+                @change="handleChange"
             >
-                {{ getOptionLabel(option) }}
-            </option>
-        </select>
+                <option v-if="placeholder && !multiple" value="">
+                    {{ placeholder }}
+                </option>
+                <option
+                    v-for="option in options"
+                    :key="getOptionValue(option)"
+                    :value="getOptionValue(option)"
+                    :selected="isSelected(getOptionValue(option))"
+                >
+                    {{ getOptionLabel(option) }}
+                </option>
+            </select>
+            <div
+                v-if="!multiple"
+                class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700 dark:text-gray-300"
+            >
+                <svg
+                    class="h-4 w-4"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                >
+                    <path
+                        fill-rule="evenodd"
+                        d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                        clip-rule="evenodd"
+                    />
+                </svg>
+            </div>
+        </div>
 
-        <p v-if="error" class="mt-1 text-sm text-danger">{{ error }}</p>
+        <p v-if="error" class="mt-1 text-sm text-red-600 dark:text-red-400">
+            {{ error }}
+        </p>
     </div>
 </template>
-
-<style scoped>
-/* Style select dropdown options with primary color */
-select.form-control {
-    cursor: pointer;
-    appearance: none;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%236b7280'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'/%3E%3C/svg%3E");
-    background-repeat: no-repeat;
-    background-position: right 0.75rem center;
-    background-size: 1rem;
-    padding-right: 2.5rem;
-}
-
-select.form-control option {
-    background-color: var(--color-primary, #6771cf);
-    color: white;
-    padding: 0.5rem;
-}
-
-select.form-control option:checked {
-    background-color: var(--color-primary-700, #4a52a0);
-}
-
-/* Dark mode */
-:root.dark select.form-control,
-.dark select.form-control {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%239ca3af'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'/%3E%3C/svg%3E");
-}
-
-:root.dark select.form-control option,
-.dark select.form-control option {
-    background-color: var(--color-primary-900, #062626);
-    color: white;
-}
-</style>

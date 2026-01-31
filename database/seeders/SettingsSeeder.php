@@ -132,6 +132,162 @@ class SettingsSeeder extends Seeder
                 'group' => 'theme',
                 'label' => 'Favicon',
             ],
+
+            // License Settings - Defaults
+            [
+                'key' => 'default_domain_limit_regular',
+                'value' => '1',
+                'type' => 'number',
+                'group' => 'license',
+                'label' => 'Domain Limit (Regular License)',
+                'description' => 'Default domain limit for regular licenses',
+            ],
+            [
+                'key' => 'default_domain_limit_extended',
+                'value' => '5',
+                'type' => 'number',
+                'group' => 'license',
+                'label' => 'Domain Limit (Extended License)',
+                'description' => 'Default domain limit for extended licenses',
+            ],
+            [
+                'key' => 'default_support_period_months',
+                'value' => '6',
+                'type' => 'number',
+                'group' => 'license',
+                'label' => 'Support Period (Months)',
+                'description' => 'Default support period for new licenses',
+            ],
+
+            // License Settings - Heartbeat
+            [
+                'key' => 'heartbeat_grace_period_hours',
+                'value' => '72',
+                'type' => 'number',
+                'group' => 'license',
+                'label' => 'Heartbeat Grace Period (Hours)',
+                'description' => 'How long before an activation is considered stale',
+            ],
+            [
+                'key' => 'heartbeat_required',
+                'value' => 'false',
+                'type' => 'boolean',
+                'group' => 'license',
+                'label' => 'Require Heartbeat',
+                'description' => 'Block access if heartbeat not received within grace period',
+            ],
+
+            // License Settings - Security
+            [
+                'key' => 'auto_block_suspicious_domains',
+                'value' => 'false',
+                'type' => 'boolean',
+                'group' => 'license',
+                'label' => 'Auto-Block Suspicious Domains',
+                'description' => 'Automatically blacklist domains with excessive failures',
+            ],
+            [
+                'key' => 'suspicious_threshold_count',
+                'value' => '10',
+                'type' => 'number',
+                'group' => 'license',
+                'label' => 'Suspicious Activity Threshold',
+                'description' => 'Number of failed attempts to trigger alert',
+            ],
+            [
+                'key' => 'suspicious_threshold_minutes',
+                'value' => '5',
+                'type' => 'number',
+                'group' => 'license',
+                'label' => 'Suspicious Activity Window (Minutes)',
+                'description' => 'Time window for counting failed attempts',
+            ],
+
+            // License Settings - API Rate Limits
+            [
+                'key' => 'rate_limit_verify',
+                'value' => '30',
+                'type' => 'number',
+                'group' => 'license',
+                'label' => 'Rate Limit: Verify (per minute)',
+            ],
+            [
+                'key' => 'rate_limit_activate',
+                'value' => '10',
+                'type' => 'number',
+                'group' => 'license',
+                'label' => 'Rate Limit: Activate/Deactivate (per minute)',
+            ],
+            [
+                'key' => 'rate_limit_heartbeat',
+                'value' => '60',
+                'type' => 'number',
+                'group' => 'license',
+                'label' => 'Rate Limit: Heartbeat (per minute)',
+            ],
+
+            // License Settings - Notifications
+            [
+                'key' => 'notify_on_new_sale',
+                'value' => 'true',
+                'type' => 'boolean',
+                'group' => 'license',
+                'label' => 'Notify on New Sale',
+            ],
+            [
+                'key' => 'notify_on_suspicious_activity',
+                'value' => 'true',
+                'type' => 'boolean',
+                'group' => 'license',
+                'label' => 'Notify on Suspicious Activity',
+            ],
+            [
+                'key' => 'support_expiry_warning_days',
+                'value' => '7',
+                'type' => 'number',
+                'group' => 'license',
+                'label' => 'Support Expiry Warning (Days)',
+                'description' => 'Days before support expiry to send warning',
+            ],
+            [
+                'key' => 'notification_email',
+                'value' => '',
+                'type' => 'email',
+                'group' => 'license',
+                'label' => 'Notification Email',
+                'description' => 'Email address for license notifications (leave empty for admin)',
+            ],
+
+            // License Settings - Envato Integration
+            [
+                'key' => 'envato_webhook_enabled',
+                'value' => 'false',
+                'type' => 'boolean',
+                'group' => 'license',
+                'label' => 'Enable Envato Webhooks',
+            ],
+            [
+                'key' => 'envato_webhook_secret',
+                'value' => '',
+                'type' => 'password',
+                'group' => 'license',
+                'label' => 'Envato Webhook Secret',
+            ],
+            [
+                'key' => 'envato_personal_token',
+                'value' => '',
+                'type' => 'password',
+                'group' => 'license',
+                'label' => 'Envato Personal Token',
+            ],
+            [
+                'key' => 'envato_auto_create_license',
+                'value' => 'true',
+                'type' => 'boolean',
+                'group' => 'license',
+                'label' => 'Auto-Create License on Sale',
+                'description' => 'Automatically create license when Envato sale webhook is received',
+            ],
         ];
 
         foreach ($settings as $setting) {

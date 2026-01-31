@@ -145,6 +145,19 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | API Signing Key
+    |--------------------------------------------------------------------------
+    |
+    | This RSA private key is used to sign API responses for integrity
+    | verification. Generate a keypair using IntegrityService::generateKeypair()
+    | and store the private key here (in .env) and public key in client apps.
+    |
+    */
+
+    'signing_key' => env('SIGNING_KEY'),
+
+    /*
+    |--------------------------------------------------------------------------
     | Maintenance Mode Driver
     |--------------------------------------------------------------------------
     |

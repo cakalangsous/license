@@ -8,6 +8,7 @@ use App\Actions\Core\Settings\ResetTheme;
 use App\Actions\Core\Settings\SendTestEmail;
 use App\Actions\Core\Settings\UpdateApplicationSettings;
 use App\Actions\Core\Settings\UpdateEmailSettings;
+use App\Actions\Core\Settings\UpdateLicenseSettings;
 use App\Actions\Core\Settings\UpdateThemeSettings;
 use App\Actions\Core\Settings\UploadLogo;
 use App\Http\Controllers\CoreController;
@@ -163,5 +164,17 @@ class SettingsController extends CoreController
         $result = (new SendTestEmail)->execute($request->email);
 
         return response()->json($result, $result['success'] ? 200 : 500);
+    }
+
+    /**
+     * Update license settings
+     */
+    public function updateLicense(Request $request): RedirectResponse
+    {
+        abort_if(! auth()->user()->can('settings_edit'), 403);
+
+        (new UpdateLicenseSettings)->execute($request->all());
+
+        return back()->with('success', 'License settings updated successfully.');
     }
 }

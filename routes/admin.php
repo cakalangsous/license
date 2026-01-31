@@ -1,20 +1,78 @@
 <?php
 
 use App\Http\Controllers\Core\AccessController;
+use App\Http\Controllers\Core\ActivationController;
+use App\Http\Controllers\Core\BlacklistedDomainController;
 use App\Http\Controllers\Core\Crud\CrudController;
 use App\Http\Controllers\Core\DashboardController;
+use App\Http\Controllers\Core\LicenseController;
+use App\Http\Controllers\Core\MarketplaceController;
 use App\Http\Controllers\Core\PermissionController;
 use App\Http\Controllers\Core\PostCategoryController;
 use App\Http\Controllers\Core\PostController;
+use App\Http\Controllers\Core\ProductController;
 use App\Http\Controllers\Core\RoleController;
+use App\Http\Controllers\Core\SaleController;
 use App\Http\Controllers\Core\SettingsController;
 use App\Http\Controllers\Core\SidebarMenuController;
 use App\Http\Controllers\Core\TagController;
 use App\Http\Controllers\Core\UploadController;
 use App\Http\Controllers\Core\UserController;
+use App\Http\Controllers\Core\VerificationLogController;
 use Illuminate\Support\Facades\Route;
 
 require __DIR__.'/crud_generated.php';
+
+// License Management Routes
+Route::prefix('products')->name('products.')->group(function () {
+    Route::get('/', [ProductController::class, 'index'])->name('index');
+    Route::post('/', [ProductController::class, 'store'])->name('store');
+    Route::put('/{product}', [ProductController::class, 'update'])->name('update');
+    Route::delete('/{product}', [ProductController::class, 'destroy'])->name('destroy');
+});
+
+Route::prefix('licenses')->name('licenses.')->group(function () {
+    Route::get('/', [LicenseController::class, 'index'])->name('index');
+    Route::get('/{license}', [LicenseController::class, 'show'])->name('show');
+    Route::post('/', [LicenseController::class, 'store'])->name('store');
+    Route::put('/{license}', [LicenseController::class, 'update'])->name('update');
+    Route::delete('/{license}', [LicenseController::class, 'destroy'])->name('destroy');
+    Route::post('/{license}/revoke', [LicenseController::class, 'revoke'])->name('revoke');
+    Route::post('/{license}/suspend', [LicenseController::class, 'suspend'])->name('suspend');
+    Route::post('/{license}/reactivate', [LicenseController::class, 'reactivate'])->name('reactivate');
+});
+
+Route::prefix('activations')->name('activations.')->group(function () {
+    Route::get('/', [ActivationController::class, 'index'])->name('index');
+    Route::post('/{activation}/deactivate', [ActivationController::class, 'deactivate'])->name('deactivate');
+    Route::post('/{activation}/block', [ActivationController::class, 'block'])->name('block');
+    Route::post('/{activation}/reactivate', [ActivationController::class, 'reactivate'])->name('reactivate');
+    Route::delete('/{activation}', [ActivationController::class, 'destroy'])->name('destroy');
+});
+
+Route::prefix('marketplaces')->name('marketplaces.')->group(function () {
+    Route::get('/', [MarketplaceController::class, 'index'])->name('index');
+    Route::post('/', [MarketplaceController::class, 'store'])->name('store');
+    Route::put('/{marketplace}', [MarketplaceController::class, 'update'])->name('update');
+    Route::delete('/{marketplace}', [MarketplaceController::class, 'destroy'])->name('destroy');
+});
+
+Route::prefix('sales')->name('sales.')->group(function () {
+    Route::get('/', [SaleController::class, 'index'])->name('index');
+});
+
+Route::prefix('verification-logs')->name('verification-logs.')->group(function () {
+    Route::get('/', [VerificationLogController::class, 'index'])->name('index');
+    Route::get('/{verificationLog}', [VerificationLogController::class, 'show'])->name('show');
+});
+
+Route::prefix('blacklisted-domains')->name('blacklisted-domains.')->group(function () {
+    Route::get('/', [BlacklistedDomainController::class, 'index'])->name('index');
+    Route::post('/', [BlacklistedDomainController::class, 'store'])->name('store');
+    Route::put('/{blacklistedDomain}', [BlacklistedDomainController::class, 'update'])->name('update');
+    Route::delete('/{blacklistedDomain}', [BlacklistedDomainController::class, 'destroy'])->name('destroy');
+    Route::post('/check', [BlacklistedDomainController::class, 'check'])->name('check');
+});
 
 // Sidebar Menu Builder Routes
 Route::prefix('sidebar-menus')->name('sidebar-menus.')->group(function () {
@@ -96,6 +154,7 @@ Route::prefix('settings')->name('settings.')->group(function () {
     Route::post('upload-logo', [SettingsController::class, 'uploadLogo'])->name('upload-logo');
     Route::delete('remove-logo', [SettingsController::class, 'removeLogo'])->name('remove-logo');
     Route::post('theme/reset', [SettingsController::class, 'resetTheme'])->name('theme.reset');
+    Route::put('license', [SettingsController::class, 'updateLicense'])->name('license.update');
 });
 
 // API Token Routes

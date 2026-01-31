@@ -81,7 +81,7 @@ store.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
  * @see app/Http/Controllers/Core/SidebarMenuController.php:36
  * @route '/admin/sidebar-menus/{sidebarMenu}'
  */
-export const update = (args: { sidebarMenu: string | number | { id: string | number } } | [sidebarMenu: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+export const update = (args: { sidebarMenu: number | { id: number } } | [sidebarMenu: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: update.url(args, options),
     method: 'put',
 })
@@ -96,7 +96,7 @@ update.definition = {
  * @see app/Http/Controllers/Core/SidebarMenuController.php:36
  * @route '/admin/sidebar-menus/{sidebarMenu}'
  */
-update.url = (args: { sidebarMenu: string | number | { id: string | number } } | [sidebarMenu: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions) => {
+update.url = (args: { sidebarMenu: number | { id: number } } | [sidebarMenu: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { sidebarMenu: args }
     }
@@ -129,7 +129,7 @@ update.url = (args: { sidebarMenu: string | number | { id: string | number } } |
  * @see app/Http/Controllers/Core/SidebarMenuController.php:36
  * @route '/admin/sidebar-menus/{sidebarMenu}'
  */
-update.put = (args: { sidebarMenu: string | number | { id: string | number } } | [sidebarMenu: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+update.put = (args: { sidebarMenu: number | { id: number } } | [sidebarMenu: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: update.url(args, options),
     method: 'put',
 })
@@ -139,7 +139,7 @@ update.put = (args: { sidebarMenu: string | number | { id: string | number } } |
  * @see app/Http/Controllers/Core/SidebarMenuController.php:43
  * @route '/admin/sidebar-menus/{sidebarMenu}'
  */
-export const destroy = (args: { sidebarMenu: string | number | { id: string | number } } | [sidebarMenu: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
+export const destroy = (args: { sidebarMenu: number | { id: number } } | [sidebarMenu: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: destroy.url(args, options),
     method: 'delete',
 })
@@ -154,7 +154,7 @@ destroy.definition = {
  * @see app/Http/Controllers/Core/SidebarMenuController.php:43
  * @route '/admin/sidebar-menus/{sidebarMenu}'
  */
-destroy.url = (args: { sidebarMenu: string | number | { id: string | number } } | [sidebarMenu: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions) => {
+destroy.url = (args: { sidebarMenu: number | { id: number } } | [sidebarMenu: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { sidebarMenu: args }
     }
@@ -187,7 +187,7 @@ destroy.url = (args: { sidebarMenu: string | number | { id: string | number } } 
  * @see app/Http/Controllers/Core/SidebarMenuController.php:43
  * @route '/admin/sidebar-menus/{sidebarMenu}'
  */
-destroy.delete = (args: { sidebarMenu: string | number | { id: string | number } } | [sidebarMenu: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
+destroy.delete = (args: { sidebarMenu: number | { id: number } } | [sidebarMenu: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: destroy.url(args, options),
     method: 'delete',
 })
@@ -231,7 +231,7 @@ reorder.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
  * @see app/Http/Controllers/Core/SidebarMenuController.php:65
  * @route '/admin/sidebar-menus/{sidebarMenu}/toggle'
  */
-export const toggleActive = (args: { sidebarMenu: string | number | { id: string | number } } | [sidebarMenu: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
+export const toggleActive = (args: { sidebarMenu: number | { id: number } } | [sidebarMenu: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     url: toggleActive.url(args, options),
     method: 'post',
 })
@@ -246,7 +246,7 @@ toggleActive.definition = {
  * @see app/Http/Controllers/Core/SidebarMenuController.php:65
  * @route '/admin/sidebar-menus/{sidebarMenu}/toggle'
  */
-toggleActive.url = (args: { sidebarMenu: string | number | { id: string | number } } | [sidebarMenu: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions) => {
+toggleActive.url = (args: { sidebarMenu: number | { id: number } } | [sidebarMenu: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { sidebarMenu: args }
     }
@@ -279,7 +279,7 @@ toggleActive.url = (args: { sidebarMenu: string | number | { id: string | number
  * @see app/Http/Controllers/Core/SidebarMenuController.php:65
  * @route '/admin/sidebar-menus/{sidebarMenu}/toggle'
  */
-toggleActive.post = (args: { sidebarMenu: string | number | { id: string | number } } | [sidebarMenu: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
+toggleActive.post = (args: { sidebarMenu: number | { id: number } } | [sidebarMenu: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     url: toggleActive.url(args, options),
     method: 'post',
 })
@@ -289,7 +289,7 @@ toggleActive.post = (args: { sidebarMenu: string | number | { id: string | numbe
  * @see app/Http/Controllers/Core/SidebarMenuController.php:72
  * @route '/admin/sidebar-menus/{sidebarMenu}/add-child'
  */
-export const addChild = (args: { sidebarMenu: string | number | { id: string | number } } | [sidebarMenu: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
+export const addChild = (args: { sidebarMenu: number | { id: number } } | [sidebarMenu: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     url: addChild.url(args, options),
     method: 'post',
 })
@@ -304,7 +304,7 @@ addChild.definition = {
  * @see app/Http/Controllers/Core/SidebarMenuController.php:72
  * @route '/admin/sidebar-menus/{sidebarMenu}/add-child'
  */
-addChild.url = (args: { sidebarMenu: string | number | { id: string | number } } | [sidebarMenu: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions) => {
+addChild.url = (args: { sidebarMenu: number | { id: number } } | [sidebarMenu: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { sidebarMenu: args }
     }
@@ -337,7 +337,7 @@ addChild.url = (args: { sidebarMenu: string | number | { id: string | number } }
  * @see app/Http/Controllers/Core/SidebarMenuController.php:72
  * @route '/admin/sidebar-menus/{sidebarMenu}/add-child'
  */
-addChild.post = (args: { sidebarMenu: string | number | { id: string | number } } | [sidebarMenu: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
+addChild.post = (args: { sidebarMenu: number | { id: number } } | [sidebarMenu: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     url: addChild.url(args, options),
     method: 'post',
 })
