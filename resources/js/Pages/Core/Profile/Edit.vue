@@ -23,8 +23,8 @@ const props = defineProps({
 const form = useForm({
     name: props.user.name,
     email: props.user.email,
-    avatar: null, // For file input
-    filepond: null, // If handling filepond
+    avatar: null,
+    filepond: null,
     timezone: props.user.timezone || "",
     locale: props.user.locale || "",
 });
@@ -40,21 +40,17 @@ const avatarUrl = computed(() => {
         if (props.user.avatar.startsWith("http")) {
             return props.user.avatar;
         }
-        // Ensure leading slash and check if it needs 'storage/' prefix based on how it's saved
-        // The saved path is 'admin/filename.jpg', correct public path is '/storage/admin/filename.jpg'
         return props.user.avatar.startsWith("/")
             ? props.user.avatar
             : "/" + props.user.avatar;
     }
-    return "/assets/images/faces/2.jpg"; // Default
+    return "/assets/images/faces/2.jpg";
 });
 
 const submitProfile = () => {
     form.post("/admin/profile/update", {
         preserveScroll: true,
-        onSuccess: () => {
-            // Handle success info if needed, or rely on flash message
-        },
+        onSuccess: () => {},
     });
 };
 

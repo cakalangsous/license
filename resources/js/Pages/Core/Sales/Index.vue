@@ -77,7 +77,7 @@ const formatDate = (date) => {
 
         <!-- Stats Cards -->
         <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
-            <Card class="bg-gradient-to-br from-primary/10 to-primary/5">
+            <Card class="bg-linear-to-br from-primary/10 to-primary/5">
                 <div class="text-center">
                     <p class="text-2xl font-bold text-primary">
                         {{ formatCurrency(stats.total_revenue) }}
@@ -89,7 +89,7 @@ const formatDate = (date) => {
                     </p>
                 </div>
             </Card>
-            <Card class="bg-gradient-to-br from-green-500/10 to-green-500/5">
+            <Card class="bg-linear-to-br from-green-500/10 to-green-500/5">
                 <div class="text-center">
                     <p
                         class="text-2xl font-bold text-green-600 dark:text-green-400"
@@ -103,7 +103,7 @@ const formatDate = (date) => {
                     </p>
                 </div>
             </Card>
-            <Card class="bg-gradient-to-br from-blue-500/10 to-blue-500/5">
+            <Card class="bg-linear-to-br from-blue-500/10 to-blue-500/5">
                 <div class="text-center">
                     <p
                         class="text-2xl font-bold text-blue-600 dark:text-blue-400"
@@ -117,7 +117,7 @@ const formatDate = (date) => {
                     </p>
                 </div>
             </Card>
-            <Card class="bg-gradient-to-br from-orange-500/10 to-orange-500/5">
+            <Card class="bg-linear-to-br from-orange-500/10 to-orange-500/5">
                 <div class="text-center">
                     <p
                         class="text-2xl font-bold text-orange-600 dark:text-orange-400"

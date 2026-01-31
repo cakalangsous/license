@@ -91,7 +91,7 @@ const getTypeClass = (type) => {
 
         <!-- Stats Cards -->
         <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
-            <Card class="bg-gradient-to-br from-blue-500/10 to-blue-500/5">
+            <Card class="bg-linear-to-br from-blue-500/10 to-blue-500/5">
                 <div class="text-center">
                     <p
                         class="text-2xl font-bold text-blue-600 dark:text-blue-400"
@@ -105,7 +105,7 @@ const getTypeClass = (type) => {
                     </p>
                 </div>
             </Card>
-            <Card class="bg-gradient-to-br from-green-500/10 to-green-500/5">
+            <Card class="bg-linear-to-br from-green-500/10 to-green-500/5">
                 <div class="text-center">
                     <p
                         class="text-2xl font-bold text-green-600 dark:text-green-400"
@@ -119,7 +119,7 @@ const getTypeClass = (type) => {
                     </p>
                 </div>
             </Card>
-            <Card class="bg-gradient-to-br from-red-500/10 to-red-500/5">
+            <Card class="bg-linear-to-br from-red-500/10 to-red-500/5">
                 <div class="text-center">
                     <p
                         class="text-2xl font-bold text-red-600 dark:text-red-400"
@@ -133,7 +133,7 @@ const getTypeClass = (type) => {
                     </p>
                 </div>
             </Card>
-            <Card class="bg-gradient-to-br from-purple-500/10 to-purple-500/5">
+            <Card class="bg-linear-to-br from-purple-500/10 to-purple-500/5">
                 <div class="text-center">
                     <p
                         class="text-2xl font-bold text-purple-600 dark:text-purple-400"
